@@ -20,7 +20,7 @@ export default class Base implements Ref {
     description?: string;
     thumbnail?: Resource;
     within?: string;
-    logo?: string;
+    logo?: string | Resource;
     attribution?: string;
     related?: { '@id': string; format: string; label: string; };
     license?: string;
@@ -52,7 +52,7 @@ export default class Base implements Ref {
         this.within = id;
     }
 
-    setLogo(logo: string): void {
+    setLogo(logo: string | Resource): void {
         this.logo = logo;
     }
 
