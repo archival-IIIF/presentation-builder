@@ -1,10 +1,11 @@
 import Service from './Service';
 import Resource from './Resource';
 
-export type Internationalized = string | { [language: string]: string[] };
+export type Internationalized = string | string[] | { [language: string]: string[] };
 export type LabelValue = { label: Internationalized; value: Internationalized };
 
 type SeeAlso = Ref & { format?: string; profile?: string; };
+type Homepage = Ref & { format?: string };
 type ViewingDirection = 'left-to-right' | 'right-to-left' | 'top-to-bottom' | 'bottom-to-top';
 
 export interface Ref {
@@ -25,7 +26,7 @@ export default class Base implements Ref {
     partOf?: { id: string; type: string; }[];
     logo?: Resource[];
     requiredStatement?: LabelValue;
-    homepage?: Ref & { format: string; };
+    homepage?: Ref & { format?: string; }[];
     rights?: string;
     service?: Service[];
     items?: Base[];
@@ -83,13 +84,20 @@ export default class Base implements Ref {
         };
     }
 
-    setHomepage(id: string, label: string): void {
-        this.homepage = {
-            id,
-            type: 'Text',
-            label: {'en': [label]},
-            format: 'text/html'
-        };
+    setHomepage(homepage: Homepage | Homepage[]): void {
+        if (!this.homepage)
+            this.homepage = [];
+
+        if (Array.isArray(homepage))
+            homepage.forEach(sa => this.setHomepage(sa));
+        else if ((typeof homepage === 'object') && homepage.hasOwnProperty('id')) {
+            const obj: Homepage = {id: homepage.id, type: 'Text', format: 'text/html'};
+
+            if (homepage.label && typeof homepage.label === 'string')
+                obj.label = {'@en': [homepage.label]};
+
+            this.homepage.push(obj);
+        }
     }
 
     setRights(rights: string): void {

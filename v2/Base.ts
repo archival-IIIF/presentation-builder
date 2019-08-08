@@ -1,8 +1,9 @@
 import Resource from './Resource';
 import Rendering from './Rendering';
 
-type Metadata = { label: string; value: string; };
+type Metadata = { label: string; value: string | string[]; };
 type SeeAlso = Ref & { id?: string; format?: string; profile?: string; };
+type Related = Ref & { id?: string; format?: string; };
 
 export interface Ref {
     '@id'?: string;
@@ -22,7 +23,7 @@ export default class Base implements Ref {
     within?: string;
     logo?: string | Resource;
     attribution?: string;
-    related?: { '@id': string; format: string; label: string; };
+    related?: Related[];
     license?: string;
 
     service?: object | object[];
@@ -60,12 +61,14 @@ export default class Base implements Ref {
         this.attribution = attribution;
     }
 
-    setRelated(id: string, label: string): void {
-        this.related = {
-            '@id': id,
-            format: 'text/html',
-            label: label,
-        };
+    setRelated(related: Related | Related[]): void {
+        if (!this.related)
+            this.related = [];
+
+        if (Array.isArray(related))
+            related.forEach(related => this.setRelated(related));
+        else if ((typeof related === 'object') && related.hasOwnProperty('id'))
+            this.related.push({'@id': related.id, format: 'text/html', label: related.label});
     }
 
     setLicense(license: string): void {
