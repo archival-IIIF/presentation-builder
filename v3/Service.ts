@@ -6,6 +6,7 @@ export default class Service {
     static AUTH_COOKIE_SERVICE_1 = 'AuthCookieService1';
     static AUTH_TOKEN_SERVICE_1 = 'AuthTokenService1';
     static AUTH_LOGOUT_SERVICE_1 = 'AuthLogoutService1';
+    static AUTH_EXTERNAL_SERVICE_1 = 'AuthExternalService1';
 
     static OLD_SERVICES = [
         Service.IMAGE_SERVICE_1, Service.IMAGE_SERVICE_2, Service.SEARCH_SERVICE_1, Service.AUTOCOMPLETE_SERVICE_1,
@@ -19,11 +20,12 @@ export default class Service {
     '@type'?: string;
 
     profile: string;
+    service?: Service | Service[];
 
-    constructor(id: string, type: string, profile: string) {
-        if (Service.OLD_SERVICES.includes(type))
+    constructor(id: string | undefined, type: string, profile: string) {
+        if (id && Service.OLD_SERVICES.includes(type))
             this['@id'] = id;
-        else
+        else if (id)
             this['id'] = id;
 
         if (Service.OLD_SERVICES.includes(type))
@@ -32,5 +34,14 @@ export default class Service {
             this['type'] = type;
 
         this.profile = profile;
+    }
+
+    setService(service: Service): void {
+        if (!this.service)
+            this.service = service;
+        else if (Array.isArray(this.service))
+            this.service.push(service);
+        else
+            this.service = [this.service, service];
     }
 }

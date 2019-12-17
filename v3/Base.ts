@@ -4,8 +4,7 @@ import Resource from './Resource';
 export type Internationalized = string | string[] | { [language: string]: string[] };
 export type LabelValue = { label: Internationalized; value: Internationalized };
 
-type SeeAlso = Ref & { format?: string; profile?: string; };
-type Homepage = Ref & { format?: string };
+type ExtendedRef = Ref & { format?: string; profile?: string; };
 type ViewingDirection = 'left-to-right' | 'right-to-left' | 'top-to-bottom' | 'bottom-to-top';
 
 export interface Ref {
@@ -29,8 +28,9 @@ export default class Base implements Ref {
     homepage?: Ref & { format?: string; }[];
     rights?: string;
     service?: Service[];
-    items?: Base[];
+    items?: (Ref | Base)[];
     metadata?: LabelValue[];
+    rendering?: Ref & { format?: string; }[];
     seeAlso?: Ref & { format?: string; profile?: string; }[];
     behavior?: string[];
     viewingDirection?: ViewingDirection;
@@ -84,14 +84,14 @@ export default class Base implements Ref {
         };
     }
 
-    setHomepage(homepage: Homepage | Homepage[]): void {
+    setHomepage(homepage: ExtendedRef | ExtendedRef[]): void {
         if (!this.homepage)
             this.homepage = [];
 
         if (Array.isArray(homepage))
             homepage.forEach(sa => this.setHomepage(sa));
         else if ((typeof homepage === 'object') && homepage.hasOwnProperty('id')) {
-            const obj: Homepage = {id: homepage.id, type: 'Text', format: 'text/html'};
+            const obj: ExtendedRef = {id: homepage.id, type: 'Text', format: 'text/html'};
 
             if (homepage.label && typeof homepage.label === 'string')
                 obj.label = {'@en': [homepage.label]};
@@ -102,6 +102,22 @@ export default class Base implements Ref {
 
     setRights(rights: string): void {
         this.rights = rights;
+    }
+
+    setRendering(rendering: Ref & { format?: string; }): void {
+        if (!this.rendering)
+            this.rendering = [];
+
+        if (Array.isArray(rendering))
+            rendering.forEach(r => this.setRendering(r));
+        else {
+            const obj: ExtendedRef = {id: rendering.id, type: rendering.type, format: rendering.format};
+
+            if (rendering.label && typeof rendering.label === 'string')
+                obj.label = {'@none': [rendering.label]};
+
+            this.rendering.push(rendering);
+        }
     }
 
     setService(service: Service): void {
@@ -116,9 +132,16 @@ export default class Base implements Ref {
             this.items = [];
 
         if (Array.isArray(items))
-            this.items = items;
+            items.forEach(item => this.addItem(item));
         else
             this.items.push(items);
+    }
+
+    addItem(item: Base) {
+        if (!this.items)
+            this.items = [];
+
+        this.items.push(item);
     }
 
     addMetadata(label: string | string[] | LabelValue | LabelValue[], value?: string | string[]): void {
@@ -139,14 +162,14 @@ export default class Base implements Ref {
             });
     }
 
-    addSeeAlso(seeAlso: SeeAlso | SeeAlso[]): void {
+    addSeeAlso(seeAlso: ExtendedRef | ExtendedRef[]): void {
         if (!this.seeAlso)
             this.seeAlso = [];
 
         if (Array.isArray(seeAlso))
             seeAlso.forEach(sa => this.addSeeAlso(sa));
         else if ((typeof seeAlso === 'object') && seeAlso.hasOwnProperty('id')) {
-            const obj: SeeAlso = {id: seeAlso.id, type: 'Dataset'};
+            const obj: ExtendedRef = {id: seeAlso.id, type: 'Dataset'};
 
             if (seeAlso.format)
                 obj.format = seeAlso.format;
