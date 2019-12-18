@@ -10,7 +10,8 @@ export default class Service {
 
     static OLD_SERVICES = [
         Service.IMAGE_SERVICE_1, Service.IMAGE_SERVICE_2, Service.SEARCH_SERVICE_1, Service.AUTOCOMPLETE_SERVICE_1,
-        Service.AUTH_COOKIE_SERVICE_1, Service.AUTH_TOKEN_SERVICE_1, Service.AUTH_LOGOUT_SERVICE_1
+        Service.AUTH_COOKIE_SERVICE_1, Service.AUTH_TOKEN_SERVICE_1, Service.AUTH_LOGOUT_SERVICE_1,
+        Service.AUTH_EXTERNAL_SERVICE_1
     ];
 
     id?: string;
