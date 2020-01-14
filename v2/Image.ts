@@ -1,8 +1,8 @@
 import Base from './Base';
 
-interface MaxSize {
-    maxWidth: number;
-    maxHeight: number;
+interface Size {
+    width: number;
+    height: number;
 }
 
 export interface ImageProfile {
@@ -43,19 +43,19 @@ export default class Image extends Base {
         this['@id'] += `${seperator}${tier.name}`;
 
         const maxSize = Image.computeMaxSize(tier, this.width, this.height);
-        if (maxSize) {
-            this.maxWidth = maxSize.maxWidth;
-            this.maxHeight = maxSize.maxHeight;
+        if (maxSize.width < this.width) {
+            this.maxWidth = maxSize.width;
+            this.maxHeight = maxSize.height;
         }
     }
 
-    static computeMaxSize(tier: AccessTier, width: number, height: number): null | MaxSize {
+    static computeMaxSize(tier: AccessTier, width: number, height: number): Size {
         if ((width <= tier.maxSize) && (height <= tier.maxSize))
-            return null;
+            return {width, height};
 
         return {
-            maxWidth: (width > height) ? tier.maxSize : Math.round(width * (tier.maxSize / height)),
-            maxHeight: (height > width) ? tier.maxSize : Math.round(height * (tier.maxSize / width))
+            width: (width > height) ? tier.maxSize : Math.round(width * (tier.maxSize / height)),
+            height: (height > width) ? tier.maxSize : Math.round(height * (tier.maxSize / width))
         }
     }
 }
