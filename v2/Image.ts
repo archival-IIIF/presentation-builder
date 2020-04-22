@@ -44,8 +44,8 @@ export default class Image extends Base {
 
         const maxSize = Image.computeMaxSize(tier, this.width, this.height);
         if (maxSize.width < this.width) {
-            this.maxWidth = maxSize.width;
-            this.maxHeight = maxSize.height;
+            this.width = maxSize.width;
+            this.height = maxSize.height;
         }
     }
 
