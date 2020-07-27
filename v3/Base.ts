@@ -26,6 +26,9 @@ export default class Base implements Ref {
     partOf?: Ref[];
     thumbnail?: Resource[];
 
+    prev?: Ref;
+    next?: Ref;
+
     logo?: Resource[];
     requiredStatement?: LabelValue;
     rights?: string;
@@ -67,6 +70,11 @@ export default class Base implements Ref {
             parent.label = Base.i18n(label);
 
         this.partOf = [parent];
+    }
+
+    setPrevAndNext(type: string, prevId?: string, nextId?: string) {
+        if (prevId) this.prev = {id: prevId, type};
+        if (nextId) this.next = {id: nextId, type};
     }
 
     setThumbnail(resource: Resource): void {
