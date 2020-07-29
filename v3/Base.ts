@@ -121,7 +121,7 @@ export default class Base implements Ref {
             this.behavior = [];
 
         if (Array.isArray(behavior))
-            behavior.forEach(b => this.setBehavior(b));
+            this.behavior = [...this.behavior, ...behavior];
         else
             this.behavior.push(behavior);
     }
@@ -137,7 +137,7 @@ export default class Base implements Ref {
         if (typeof label === 'string' && value !== undefined)
             this.metadata.push({label: Base.i18n(label), value: Base.i18n(value)});
         else if (Array.isArray(label))
-            this.metadata.push(...label);
+            this.metadata = [...this.metadata, ...label];
         else if (typeof label !== 'string')
             this.metadata.push(label);
     }
@@ -147,7 +147,7 @@ export default class Base implements Ref {
             this.items = [];
 
         if (Array.isArray(items))
-            this.items.push(...items);
+            this.items = [...this.items, ...items];
         else
             this.items.push(items);
     }

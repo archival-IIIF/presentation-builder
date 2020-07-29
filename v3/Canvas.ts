@@ -20,7 +20,7 @@ export default class Canvas extends Base {
             this.annotations = [];
 
         if (Array.isArray(annotations))
-            this.annotations.push(...annotations);
+            this.annotations = [...this.annotations, ...annotations];
         else
             this.annotations.push(annotations);
     }
