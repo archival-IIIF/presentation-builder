@@ -26,9 +26,6 @@ export default class Base implements Ref {
     partOf?: Ref[];
     thumbnail?: Resource[];
 
-    prev?: Ref;
-    next?: Ref;
-
     logo?: Resource[];
     requiredStatement?: LabelValue;
     rights?: string;
@@ -64,17 +61,12 @@ export default class Base implements Ref {
         this.summary = Base.i18n(summary);
     }
 
-    setParent(id: string, type: string, label?: Internationalize): void {
-        const parent: Ref = {id, type};
+    setParent(id: string | Ref, type?: string, label?: Internationalize): void {
+        const parent: Ref = typeof id === 'string' ? {id, type} : id;
         if (label)
             parent.label = Base.i18n(label);
 
         this.partOf = [parent];
-    }
-
-    setPrevAndNext(type: string, prevId?: string, nextId?: string) {
-        if (prevId) this.prev = {id: prevId, type};
-        if (nextId) this.next = {id: nextId, type};
     }
 
     setThumbnail(resource: Resource): void {

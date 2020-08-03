@@ -34,37 +34,43 @@ export default class AuthService extends Base {
         if (authTexts.failureDescription) this.failureDescription = authTexts.failureDescription;
     }
 
-    static getAuthenticationService(prefixAuthUrl: string, authTexts: AuthTextsByType,
+    static getAuthenticationService(authUri: (type: string) => string, authTexts: AuthTextsByType,
                                     type: AuthType = 'login'): AuthService | null {
         let service = null;
         switch (type) {
             case 'login':
-                service = new AuthService(`${prefixAuthUrl}/login`,
-                    'http://iiif.io/api/auth/1/login', 'http://iiif.io/api/auth/1/context.json');
+                service = new AuthService(
+                    authUri('login'),
+                    'http://iiif.io/api/auth/1/login',
+                    'http://iiif.io/api/auth/1/context.json'
+                );
                 break;
             case 'external':
-                service = new AuthService(undefined,
-                    'http://iiif.io/api/auth/1/external', 'http://iiif.io/api/auth/1/context.json');
+                service = new AuthService(
+                    undefined,
+                    'http://iiif.io/api/auth/1/external',
+                    'http://iiif.io/api/auth/1/context.json'
+                );
                 break;
             default:
                 return null;
         }
 
         service.setAuthTexts(authTexts[type]);
-        service.setService(AuthService.getAccessTokenService(prefixAuthUrl));
+        service.setService(AuthService.getAccessTokenService(authUri));
 
         if (type !== 'external')
-            service.setService(AuthService.getLogoutService(prefixAuthUrl, authTexts));
+            service.setService(AuthService.getLogoutService(authUri, authTexts));
 
         return service;
     }
 
-    static getAccessTokenService(prefixAuthUrl: string): AuthService {
-        return new AuthService(`${prefixAuthUrl}/token`, 'http://iiif.io/api/auth/1/token');
+    static getAccessTokenService(authUri: (type: string) => string): AuthService {
+        return new AuthService(authUri('token'), 'http://iiif.io/api/auth/1/token');
     }
 
-    static getLogoutService(prefixAuthUrl: string, authTexts: { [type: string]: AuthTexts }): AuthService {
-        const service = new AuthService(`${prefixAuthUrl}/logout`, 'http://iiif.io/api/auth/1/logout');
+    static getLogoutService(authUri: (type: string) => string, authTexts: { [type: string]: AuthTexts }): AuthService {
+        const service = new AuthService(authUri('logout'), 'http://iiif.io/api/auth/1/logout');
         service.setAuthTexts(authTexts.logout);
         return service;
     }

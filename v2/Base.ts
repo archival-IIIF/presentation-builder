@@ -20,7 +20,7 @@ export default class Base implements Ref {
 
     description?: string;
     thumbnail?: Resource;
-    within?: string;
+    within?: string | Ref;
     logo?: string | Resource;
     attribution?: string;
     related?: Related[];
@@ -49,7 +49,7 @@ export default class Base implements Ref {
         this.thumbnail = resource;
     }
 
-    setParent(id: string): void {
+    setParent(id: string | Ref): void {
         this.within = id;
     }
 
