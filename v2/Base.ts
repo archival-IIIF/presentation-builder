@@ -16,7 +16,7 @@ export default class Base implements Ref {
     '@type'?: string;
     label?: string;
 
-    '@context': string;
+    '@context': string | string[];
 
     description?: string;
     thumbnail?: Resource;
@@ -37,7 +37,7 @@ export default class Base implements Ref {
         if (label) this.label = label;
     }
 
-    setContext(context?: string): void {
+    setContext(context?: string | string[]): void {
         this['@context'] = context || 'http://iiif.io/api/presentation/2/context.json';
     }
 
