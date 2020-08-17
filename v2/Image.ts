@@ -39,13 +39,16 @@ export default class Image extends Base {
         this.profile = ['http://iiif.io/api/image/2/level2.json', profile];
     }
 
-    setTier(tier: AccessTier, seperator: string): void {
-        this['@id'] += `${seperator}${tier.name}`;
-
-        const maxSize = Image.computeMaxSize(tier, this.width, this.height);
-        if (maxSize.width < this.width) {
-            this.width = maxSize.width;
-            this.height = maxSize.height;
+    setTier(tier: AccessTier | string, seperator: string): void {
+        if (typeof tier === 'string')
+            this['@id'] += `${seperator}${tier}`;
+        else {
+            this['@id'] += `${seperator}${tier.name}`;
+            const maxSize = Image.computeMaxSize(tier, this.width, this.height);
+            if (maxSize.width < this.width) {
+                this.width = maxSize.width;
+                this.height = maxSize.height;
+            }
         }
     }
 
