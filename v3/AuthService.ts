@@ -31,6 +31,9 @@ export default class AuthService extends Service {
 
     static getAuthenticationService(authUri: (type: string) => string, authTexts: AuthTextsByType,
                                     type: AuthType = 'login'): AuthService | null {
+        if (!authTexts.hasOwnProperty(type))
+            return null;
+
         let service = null;
         switch (type) {
             case 'login':
