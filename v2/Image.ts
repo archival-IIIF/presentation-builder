@@ -8,7 +8,10 @@ interface Size {
 export interface ImageProfile {
     formats: string[],
     qualities: string[],
-    supports: string[]
+    supports: string[],
+    maxWidth?: number,
+    maxHeight?: number,
+    maxArea?: number
 }
 
 export interface AccessTier {
@@ -23,9 +26,6 @@ export default class Image extends Base {
     width: number;
     height: number;
     sizes: [];
-
-    maxWidth?: number;
-    maxHeight?: number;
 
     constructor(id: string, width: number, height: number) {
         super(id);
