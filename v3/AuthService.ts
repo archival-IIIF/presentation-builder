@@ -64,7 +64,7 @@ export default class AuthService extends Service {
 
     static getLogoutService(authUri: (type: string) => string, authTexts: { [type: string]: AuthTexts }): AuthService {
         const service = new AuthService(
-            authUri('login'), Service.AUTH_LOGOUT_SERVICE_1, 'http://iiif.io/api/auth/1/logout');
+            authUri('logout'), Service.AUTH_LOGOUT_SERVICE_1, 'http://iiif.io/api/auth/1/logout');
         service.setAuthTexts(authTexts.logout);
         return service;
     }
