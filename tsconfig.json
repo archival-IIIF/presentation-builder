@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "module": "commonjs",
+    "target": "ES2016",
+    "noImplicitAny": true,
+    "outDir": "./dist",
+    "declaration": true,
+    "sourceMap": true,
+    "plugins": [
+      { "name": "typescript-tslint-plugin" }
+    ]
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}
