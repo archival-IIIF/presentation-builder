@@ -4,10 +4,10 @@ import Base from './v3/Base';
 import Canvas from './v3/Canvas';
 import Collection from './v3/Collection';
 import Manifest from './v3/Manifest';
+import Rendering from './v3/Rendering';
 import Resource from './v3/Resource';
 import TextResource from './v3/TextResource';
 
-import Rendering from './v2/Rendering';
 
 import {default as AnnotationV2} from './v2/Annotation';
 import {default as AnnotationListV2} from './v2/AnnotationList';
@@ -18,6 +18,7 @@ import {default as CollectionV2} from './v2/Collection';
 import {default as ImageV2} from './v2/Image';
 import {default as ManifestV2} from './v2/Manifest';
 import {default as MediaSequenceV2} from './v2/MediaSequence';
+import {default as RenderingV2} from './v2/Rendering';
 
 import {default as SearchHitV2} from './v2/SearchHit';
 import {default as SequenceV2} from './v2/Sequence';
@@ -33,6 +34,7 @@ export {
     Canvas,
     Collection,
     Manifest,
+    Rendering,
     Resource,
     TextResource,
 
@@ -45,7 +47,7 @@ export {
     ImageV2,
     ManifestV2,
     MediaSequenceV2,
-    Rendering,
+    RenderingV2,
     SearchHitV2,
     SequenceV2,
     TermListV2,
