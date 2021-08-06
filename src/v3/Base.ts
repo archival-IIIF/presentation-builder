@@ -36,7 +36,7 @@ export default class Base implements Ref {
     viewingDirection?: ViewingDirection;
 
     metadata?: LabelValue[];
-    items?: Base[] | Ref[];
+    items?: Ref[] | Base[];
     rendering?: ExtendedRef[];
     service?: Service[];
 
@@ -134,14 +134,14 @@ export default class Base implements Ref {
             this.metadata.push(label);
     }
 
-    setItems(items: Ref | Ref[]): void {
+    setItems(items: Ref | Ref[] | Base | Base[]): void {
         if (!this.items)
             this.items = [];
 
         if (Array.isArray(items))
             this.items = [...this.items, ...items];
         else
-            this.items.push(items);
+            this.items.push(items as Base);
     }
 
     setRendering(rendering: I18nExtendedRef | I18nExtendedRef[]): void {
