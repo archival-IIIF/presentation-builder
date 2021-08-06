@@ -36,7 +36,7 @@ export default class Base implements Ref {
     viewingDirection?: ViewingDirection;
 
     metadata?: LabelValue[];
-    items?: Ref[];
+    items?: Base[] | Ref[];
     rendering?: ExtendedRef[];
     service?: Service[];
 
