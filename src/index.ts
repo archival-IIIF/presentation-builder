@@ -7,20 +7,22 @@ import Manifest from './v3/Manifest';
 import Resource from './v3/Resource';
 import TextResource from './v3/TextResource';
 
-import * as AnnotationV2 from './v2/Annotation';
-import * as AnnotationListV2 from './v2/AnnotationList';
-import * as AuthServiceV2 from './v2/AuthService';
-import * as BaseV2 from './v2/Base';
-import * as CanvasV2 from './v2/Canvas';
-import * as CollectionV2 from './v2/Collection';
-import * as ImageV2 from './v2/Image';
-import * as ManifestV2 from './v2/Manifest';
-import * as MediaSequenceV2 from './v2/MediaSequence';
-import * as RenderingV2 from './v2/Rendering';
-import * as SearchHitV2 from './v2/SearchHit';
-import * as SequenceV2 from './v2/Sequence';
-import * as TermListV2 from './v2/TermList';
-import * as TextResourceV2 from './v2/TextResource';
+import Rendering from './v2/Rendering';
+
+import {default as AnnotationV2} from './v2/Annotation';
+import {default as AnnotationListV2} from './v2/AnnotationList';
+import {default as AuthServiceV2} from './v2/AuthService';
+import {default as BaseV2} from './v2/Base';
+import {default as CanvasV2} from './v2/Canvas';
+import {default as CollectionV2} from './v2/Collection';
+import {default as ImageV2} from './v2/Image';
+import {default as ManifestV2} from './v2/Manifest';
+import {default as MediaSequenceV2} from './v2/MediaSequence';
+
+import {default as SearchHitV2} from './v2/SearchHit';
+import {default as SequenceV2} from './v2/Sequence';
+import {default as TermListV2} from './v2/TermList';
+import {default as TextResourceV2} from './v2/TextResource';
 
 
 // without default
@@ -43,7 +45,7 @@ export {
     ImageV2,
     ManifestV2,
     MediaSequenceV2,
-    RenderingV2,
+    Rendering,
     SearchHitV2,
     SequenceV2,
     TermListV2,
