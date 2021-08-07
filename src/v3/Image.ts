@@ -70,7 +70,6 @@ export default class Image {
         this.profile = 'level2';
         this.width = width;
         this.height = height;
-        this.sizes = [];
     }
 
     setTier(tier: AccessTier | string, seperator: string): void {
