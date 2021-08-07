@@ -23,6 +23,7 @@ import {default as ImageV2} from './v2/Image';
 import {default as ManifestV2} from './v2/Manifest';
 import {default as MediaSequenceV2} from './v2/MediaSequence';
 import {default as RenderingV2} from './v2/Rendering';
+import {default as ResourceV2} from './v2/Resource';
 
 import {default as SearchHitV2} from './v2/SearchHit';
 import {default as SequenceV2} from './v2/Sequence';
@@ -56,6 +57,7 @@ export {
     ManifestV2,
     MediaSequenceV2,
     RenderingV2,
+    ResourceV2,
     SearchHitV2,
     SequenceV2,
     TermListV2,
