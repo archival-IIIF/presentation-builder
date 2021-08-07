@@ -12,6 +12,7 @@ export default class Manifest extends Base {
             this.setSequence(sequence);
         if (mediaSequence)
             this.setMediaSequence(mediaSequence);
+        this['@context'] = 'http://iiif.io/api/presentation/2/context.json';
     }
 
     setSequence(sequence: Sequence): void {
