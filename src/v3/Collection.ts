@@ -1,4 +1,4 @@
-import Base, {Internationalize, Ref} from './Base';
+import Base, {Internationalize, Internationalized, Ref} from './Base';
 import Resource from "./Resource";
 import Manifest from "./Manifest";
 
@@ -12,18 +12,18 @@ export interface CollectionRef extends Ref {
 
 export default class Collection extends Base {
 
-    items: ManifestRef[] | CollectionRef[] | undefined;
+    items: ManifestRef[] | CollectionRef[];
+    label: Internationalized;
+    id: string;
+    type: 'Collection';
 
     constructor(id: string, label: Internationalize) {
         super(id, 'Collection', label);
         this["@context"] = "http://iiif.io/api/presentation/3/context.json";
+        this.items = [];
     }
 
     addCollection(collection: Collection) {
-        if (!this.items) {
-            this.items = [];
-        }
-
         this.items.push({
             id: collection.id,
             type: collection.type,

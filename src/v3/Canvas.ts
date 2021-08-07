@@ -4,6 +4,7 @@ import AnnotationPage from './AnnotationPage';
 export default class Canvas extends Base {
 
     items: AnnotationPage[] | undefined;
+    type: 'Canvas';
 
     width?: number;
     height?: number;

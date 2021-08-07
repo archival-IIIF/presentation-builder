@@ -6,6 +6,7 @@ export default class AnnotationPage extends Base {
     next?: Ref;
 
     items: Annotation[] | undefined;
+    type: 'AnnotationPage';
 
     constructor(id: string) {
         super(id, 'AnnotationPage');
