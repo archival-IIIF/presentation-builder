@@ -5,7 +5,7 @@ export type Internationalized = { [language: string]: string[] };
 export type Internationalize = string | string[] | Internationalized;
 export type LabelValue = { label: Internationalized; value: Internationalized };
 
-type ExtendedRef = Ref & { format?: string; profile?: string; };
+export type ExtendedRef = Ref & { format?: string; profile?: string; };
 type I18nExtendedRef = { id?: string; type?: string; label?: Internationalize; format?: string; profile?: string; };
 type ViewingDirection = 'left-to-right' | 'right-to-left' | 'top-to-bottom' | 'bottom-to-top';
 
