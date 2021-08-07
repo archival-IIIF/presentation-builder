@@ -10,6 +10,7 @@ export default class Annotation extends Base {
     motivation: string;
     body: Resource | TextResource;
     target?: string;
+    type: 'Annotation';
 
     constructor(id: string, resource: Resource | TextResource, motivation = 'painting') {
         super(id, 'Annotation');
