@@ -1,5 +1,6 @@
 import Service from './Service';
 import Resource from './Resource';
+import Rendering from "./Rendering";
 
 export type Internationalized = { [language: string]: string[] };
 export type Internationalize = string | string[] | Internationalized;
@@ -37,7 +38,7 @@ export default class Base implements Ref {
 
     metadata?: LabelValue[];
     items?: Ref[];
-    rendering?: ExtendedRef[];
+    rendering?: Rendering[];
     service?: Service[];
 
     constructor(id?: string, type?: string, label?: Internationalize) {
