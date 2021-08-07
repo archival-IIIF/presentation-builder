@@ -1,9 +1,9 @@
 import Resource from './Resource';
 import Rendering from './Rendering';
 
-type Metadata = { label: string; value: string | string[]; };
-type SeeAlso = Ref & { id?: string; format?: string; profile?: string; };
-type Related = Ref & { id?: string; format?: string; };
+export type Metadata = { label: string; value: string | string[]; };
+export type SeeAlso = Ref & { id?: string; format?: string; profile?: string; };
+export type Related = Ref & { id?: string; format?: string; };
 
 export interface Ref {
     '@id'?: string;
