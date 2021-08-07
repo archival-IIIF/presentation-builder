@@ -1,4 +1,6 @@
 import Annotation from './v3/Annotation';
+import AnnotationCollection from './v3/AnnotationCollection';
+import AnnotationPage from './v3/AnnotationPage';
 import AuthService from './v3/AuthService';
 import Base from './v3/Base';
 import Canvas from './v3/Canvas';
@@ -6,6 +8,7 @@ import Collection from './v3/Collection';
 import Manifest from './v3/Manifest';
 import Rendering from './v3/Rendering';
 import Resource from './v3/Resource';
+import Service from './v3/Service';
 import TextResource from './v3/TextResource';
 
 
@@ -29,6 +32,8 @@ import {default as TextResourceV2} from './v2/TextResource';
 // without default
 export {
     Annotation,
+    AnnotationCollection,
+    AnnotationPage,
     AuthService,
     Base,
     Canvas,
@@ -36,6 +41,7 @@ export {
     Manifest,
     Rendering,
     Resource,
+    Service,
     TextResource,
 
     AnnotationV2,
