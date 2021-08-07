@@ -1,8 +1,11 @@
 import Base, {Ref} from './Base';
+import Annotation from "./Annotation";
 
 export default class AnnotationPage extends Base {
     prev?: Ref;
     next?: Ref;
+
+    items: Annotation[] | undefined;
 
     constructor(id: string) {
         super(id, 'AnnotationPage');
