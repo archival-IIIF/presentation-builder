@@ -5,6 +5,7 @@ export default class Resource extends Base {
     width?: number;
     height?: number;
     duration?: number;
+    language?: string;
 
     constructor(id: string, type: string, format?: string,
                 width?: number | null, height?: number | null, duration?: number | null) {

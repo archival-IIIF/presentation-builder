@@ -9,6 +9,8 @@ export default class Canvas extends Base {
     width?: number;
     height?: number;
     duration?: number;
+    behavior?: ("auto-advance" | "facing-pages" | "no-auto-advance" | "non-paged")[];
+    navDate?: string;
 
     annotations?: AnnotationPage[];
 

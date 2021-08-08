@@ -1,13 +1,17 @@
 import Base, {Internationalize, Internationalized, Ref} from './Base';
 import Resource from "./Resource";
 import Manifest from "./Manifest";
+import Service from "./Service";
+import AuthService from "./AuthService";
+import Provider from "./Provider";
+import AnnotationPage from "./AnnotationPage";
 
 export interface ManifestRef extends Ref {
-    thumbnail?: Resource;
+    thumbnail?: Resource[];
 }
 
 export interface CollectionRef extends Ref {
-    thumbnail?: Resource;
+    thumbnail?: Resource[];
 }
 
 export default class Collection extends Base {
@@ -16,6 +20,12 @@ export default class Collection extends Base {
     label: Internationalized;
     id: string;
     type: 'Collection';
+    behavior?: ("auto-advance" | "continuous" | "individuals" | "multi-part" | "no-auto-advance" | "no-repeat" |
+        "paged" | "repeat" | "together" | "unordered")[];
+    navDate?: string;
+    services?: (Service | AuthService)[];
+    provider?: Provider[];
+    annotations?: AnnotationPage[];
 
     constructor(id: string, label: Internationalize) {
         super(id, 'Collection', label);
@@ -28,7 +38,7 @@ export default class Collection extends Base {
             id: collection.id,
             type: collection.type,
             label: collection.label,
-            thumbnail: collection.thumbnail[0]
+            thumbnail: collection.thumbnail
         })
     }
 
@@ -41,7 +51,7 @@ export default class Collection extends Base {
             id: manifest.id,
             type: manifest.type,
             label: manifest.label,
-            thumbnail: manifest.thumbnail[0]
+            thumbnail: manifest.thumbnail
         })
     }
 }
