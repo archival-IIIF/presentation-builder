@@ -22,10 +22,10 @@ presentation-builder is available as an [npm package](https://www.npmjs.com/pack
 
 ```sh
 // with npm
-npm -i @archival-iiif/presentation-builder```
+npm -i @archival-iiif/presentation-builder
 
 // with yarn
-yarn add @archival-iiif/presentation-builder```
+yarn add @archival-iiif/presentation-builder
 ```
 
 ## Usage
