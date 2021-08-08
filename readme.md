@@ -8,13 +8,15 @@ Javascript library for generating IIIF manifests
 
 ## Usage
 
-### Simple manifest example (presentation API v3)
+**Code**
 
 ```typescript
 import {Manifest} from "@archival-iiif/presentation-builder";
 
 new Manifest('https://example.org/iiif/book1/manifest', 'Book 1');
 ```
+
+**JSON output**
 
 ```json
 {
@@ -25,38 +27,15 @@ new Manifest('https://example.org/iiif/book1/manifest', 'Book 1');
 }
 ```
 
-### Simple collection example (presentation API v3)
+### More examples
 
-```typescript
-import {Collection} from "@archival-iiif/presentation-builder";
+* Manifest (Presentation API 3.0)
+* [Collection (Presentation API 3.0)](https://github.com/archival-IIIF/presentation-builder/blob/master/doc/examples/collection-v3.md)
+* [Image Information (Image API 3.0)](https://github.com/archival-IIIF/presentation-builder/blob/master/doc/examples/image-v3.md)
+* Manifest (Presentation API 2.0)
+* Collection (Presentation API 2.0)
+* Image Information (Image API 2.0)
 
-new Collection('https://example.org/iiif/collection/top', 'Collection for Example Organization');
-```
+## License
 
-```json
-{
-  "id": "https://example.org/iiif/collection/top", 
-  "type": "Manifest",
-  "@context": "http://iiif.io/api/presentation/3/context.json",
-  "label": {"none": "Collection for Example Organization"}
-}
-```
-
-### Simple manifest example (presentation API v2)
-
-```typescript
-import {ManifestV2} from "@archival-iiif/presentation-builder";
-
-new Manifest('https://example.org/iiif/book1/manifest', 'Book 1');
-```
-
-```json
-{
-  "@id": "https://example.org/iiif/book1/manifest", 
-  "@type": "sc:Manifest",
-  "@context": "http://iiif.io/api/presentation/3/context.json",
-  "label": "Book 1"
-}
-```
-
-
+This software is released under the MIT license.
