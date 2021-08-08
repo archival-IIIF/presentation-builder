@@ -8,11 +8,17 @@
   ],
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "mocha -r ts-node/register test/**/*.ts"
   },
   "devDependencies": {
-    "tsc": "^2.0.3",
-    "typescript": "^4.3.5"
+    "@types/mocha": "^9.0.0",
+    "mocha": "^9.0.3",
+    "chai": "^4.3.4",
+    "@types/chai": "^4.2.21",
+    "@types/node": "^16.4.13",
+    "typescript": "^4.3.5",
+    "ts-node": "^10.1.0"
   },
   "description": "Javascript library for generating IIIF manifests.",
   "repository": {
