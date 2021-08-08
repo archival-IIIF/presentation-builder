@@ -10,6 +10,7 @@ import Rendering from '../src/v3/Rendering';
 import Provider from '../src/v3/Provider';
 import * as fs from "fs";
 import Range from "../src/v3/Range";
+import AnnotationCollection from "../src/v3/AnnotationCollection";
 
 // https://iiif.io/api/presentation/3.0/#b-example-manifest-response
 describe('Manifest V3', function() {
@@ -104,10 +105,7 @@ function getStructures() {
     range0.label = { "en": [ "Table of Contents" ] };
     const range1 = new Range('https://example.org/iiif/book1/range/r1');
     range1.label = { "en": [ "Introduction" ] };
-    range1.supplementary = {
-        "id": "https://example.org/iiif/book1/annocoll/introTexts",
-        "type": "AnnotationCollection"
-    }
+    range1.supplementary = new AnnotationCollection("https://example.org/iiif/book1/annocoll/introTexts");
     const canvas = new Canvas('https://example.org/iiif/book1/canvas/p1');
     range1.items = [canvas];
     range0.items = [range1];
