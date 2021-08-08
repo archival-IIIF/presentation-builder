@@ -11,6 +11,7 @@ export default class Annotation extends Base {
     body: Resource | TextResource;
     target?: string;
     type: 'Annotation';
+    timeMode?: "trim" | "scale" | "loop";
 
     constructor(id: string, resource: Resource | TextResource, motivation = 'painting') {
         super(id, 'Annotation');

@@ -4,6 +4,7 @@ import AnnotationPage from './AnnotationPage';
 export default class Canvas extends Base {
 
     items: AnnotationPage[] | undefined;
+    start?: AnnotationPage;
     type: 'Canvas';
 
     width?: number;
@@ -13,6 +14,8 @@ export default class Canvas extends Base {
     navDate?: string;
 
     annotations?: AnnotationPage[];
+    placeholderCanvas?: Canvas;
+    accompanyingCanvas?: Canvas;
 
     constructor(id: string, width?: number | null, height?: number | null, duration?: number | null) {
         super(id, 'Canvas');

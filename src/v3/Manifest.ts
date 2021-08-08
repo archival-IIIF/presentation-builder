@@ -1,8 +1,7 @@
-import Base, {Internationalize, Internationalized} from './Base';
+import Base, {Internationalize, Internationalized, ViewingDirection} from './Base';
 import Canvas from "./Canvas";
 import Service from "./Service";
 import AuthService from "./AuthService";
-import Provider from "./Provider";
 import AnnotationPage from "./AnnotationPage";
 import Range from "./Range";
 
@@ -17,9 +16,11 @@ export default class Manifest extends Base {
     navDate?: string;
     start?: Canvas;
     services?: (Service | AuthService)[];
-    provider?: Provider[];
     annotations?: AnnotationPage[];
     structures?: Range[];
+    placeholderCanvas?: Canvas;
+    accompanyingCanvas?: Canvas;
+    viewingDirection?: ViewingDirection;
 
     constructor(id: string, label: Internationalize) {
         super(id, 'Manifest', label);

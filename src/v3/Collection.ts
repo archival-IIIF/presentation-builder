@@ -1,10 +1,10 @@
-import Base, {Internationalize, Internationalized, Ref} from './Base';
+import Base, {Internationalize, Internationalized, Ref, ViewingDirection} from './Base';
 import Resource from "./Resource";
 import Manifest from "./Manifest";
 import Service from "./Service";
 import AuthService from "./AuthService";
-import Provider from "./Provider";
 import AnnotationPage from "./AnnotationPage";
+import Canvas from "./Canvas";
 
 export interface ManifestRef extends Ref {
     thumbnail?: Resource[];
@@ -24,8 +24,10 @@ export default class Collection extends Base {
         "paged" | "repeat" | "together" | "unordered")[];
     navDate?: string;
     services?: (Service | AuthService)[];
-    provider?: Provider[];
     annotations?: AnnotationPage[];
+    placeholderCanvas?: Canvas;
+    accompanyingCanvas?: Canvas;
+    viewingDirection?: ViewingDirection;
 
     constructor(id: string, label: Internationalize) {
         super(id, 'Collection', label);

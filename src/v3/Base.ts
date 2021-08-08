@@ -1,6 +1,7 @@
 import Service from './Service';
 import Resource from './Resource';
 import Rendering from "./Rendering";
+import Provider from "./Provider";
 
 export type Internationalized = { [language: string]: string[] };
 export type Internationalize = string | string[] | Internationalized;
@@ -8,7 +9,7 @@ export type LabelValue = { label: Internationalized; value: Internationalized };
 
 export type ExtendedRef = Ref & { format?: string; profile?: string; };
 type I18nExtendedRef = { id?: string; type?: string; label?: Internationalize; format?: string; profile?: string; };
-type ViewingDirection = 'left-to-right' | 'right-to-left' | 'top-to-bottom' | 'bottom-to-top';
+export type ViewingDirection = 'left-to-right' | 'right-to-left' | 'top-to-bottom' | 'bottom-to-top';
 
 export interface Ref {
     id?: string;
@@ -19,13 +20,14 @@ export interface Ref {
 export default class Base implements Ref {
     '@context'?: string | string[];
 
-    id?: string;
-    type?: string;
+    id: string;
+    type: string;
     label?: Internationalized;
 
     summary?: Internationalized;
     partOf?: Ref[];
     thumbnail?: Resource[];
+    provider?: Provider[];
 
     logo?: Resource[];
     requiredStatement?: LabelValue;
@@ -34,7 +36,6 @@ export default class Base implements Ref {
     seeAlso?: ExtendedRef[];
 
     behavior?: string[];
-    viewingDirection?: ViewingDirection;
 
     metadata?: LabelValue[];
     items?: Ref[];
@@ -117,10 +118,6 @@ export default class Base implements Ref {
             this.behavior = [...this.behavior, ...behavior];
         else
             this.behavior.push(behavior);
-    }
-
-    setViewingDirection(viewingDirection: ViewingDirection): void {
-        this.viewingDirection = viewingDirection;
     }
 
     setMetadata(label: string | LabelValue | LabelValue[], value?: string | string[]): void {
