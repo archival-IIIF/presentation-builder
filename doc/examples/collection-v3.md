@@ -3,12 +3,12 @@
 **Code**
 
 ```typescript
-const collectionActual = new Collection(
+const c = new Collection(
     'https://example.org/iiif/collection/top',
     { "en": [ "Collection for Example Organization" ] }
 );
-collectionActual.summary = { "en": [ "Short summary of the Collection" ] };
-collectionActual.requiredStatement = {
+c.summary = { "en": [ "Short summary of the Collection" ] };
+c.requiredStatement = {
     "label": { "en": [ "Attribution" ] },
     "value": { "en": [ "Provided by Example Organization" ] }
 };
@@ -19,7 +19,7 @@ const manifest = new Manifest(
 manifest.thumbnail = [
     new Resource('https://example.org/manifest1/thumbnail.jpg', 'Image', 'image/jpeg')
 ]
-collectionActual.addManifest(manifest);
+c.addManifest(manifest);
 ```
 
 **JSON output**
