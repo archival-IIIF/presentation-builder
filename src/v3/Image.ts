@@ -52,7 +52,7 @@ export default class Image {
     maxWidth?: number;
     maxHeight?: number;
     maxArea?: number;
-    tiles?: Tiles;
+    tiles?: Tiles[];
     extraFormats?: string[];
     preferredFormats?: string[];
     rights?: string;
