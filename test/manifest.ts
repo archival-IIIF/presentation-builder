@@ -96,7 +96,6 @@ describe('Manifest V3', function() {
 
 
         assert.expect(manifestShould).to.eql(JSON.parse(JSON.stringify(manifestActual)));
-
     });
 });
 
