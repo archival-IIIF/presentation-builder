@@ -56,4 +56,8 @@ export default class Collection extends Base {
             thumbnail: manifest.thumbnail
         })
     }
+
+    setViewingDirectory(viewingDirection: ViewingDirection) {
+        this.viewingDirection = viewingDirection;
+    }
 }

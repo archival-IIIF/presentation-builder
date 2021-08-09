@@ -27,4 +27,8 @@ export default class Manifest extends Base {
         this["@context"] = "http://iiif.io/api/presentation/3/context.json";
         this.items = [];
     }
+
+    setViewingDirectory(viewingDirection: ViewingDirection) {
+        this.viewingDirection = viewingDirection;
+    }
 }

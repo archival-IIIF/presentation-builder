@@ -18,4 +18,7 @@ export default class Range extends Base {
         super(id, 'Range');
     }
 
+    setViewingDirectory(viewingDirection: ViewingDirection) {
+        this.viewingDirection = viewingDirection;
+    }
 }
