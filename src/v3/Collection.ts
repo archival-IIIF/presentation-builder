@@ -28,8 +28,8 @@ export default class Collection extends CollectionManifestCanvasRangeBase {
 
     constructor(id: string, label: Internationalize) {
         super(id, 'Collection', label);
-        this["@context"] = "http://iiif.io/api/presentation/3/context.json";
-        this.items = [];
+        this.setContext('http://iiif.io/api/presentation/3/context.json')
+        this.setItems([]);
     }
 
     addCollection(collection: Collection) {

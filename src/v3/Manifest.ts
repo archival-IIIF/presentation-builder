@@ -21,8 +21,8 @@ export default class Manifest extends CollectionManifestCanvasRangeBase {
 
     constructor(id: string, label: Internationalize) {
         super(id, 'Manifest', label);
-        this["@context"] = "http://iiif.io/api/presentation/3/context.json";
-        this.items = [];
+        this.setContext('http://iiif.io/api/presentation/3/context.json');
+        this.setItems([]);
     }
 
     setItems(items: Canvas[]) {
