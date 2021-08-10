@@ -1,6 +1,7 @@
 import Base from './Base';
 import AnnotationPage from './AnnotationPage';
 import CollectionManifestCanvasRangeBase from "./CollectionManifestCanvasRangeBase";
+import {CollectionBehavior} from "./Collection";
 
 type CancasBehavior = "auto-advance" | "facing-pages" | "no-auto-advance" | "non-paged";
 
@@ -21,8 +22,14 @@ export default class Canvas extends CollectionManifestCanvasRangeBase {
         if (duration) this.duration = duration;
     }
 
-    setBehavior(behavior?: CancasBehavior[]) {
-        this.behavior = behavior;
+    setBehavior(behavior?: CancasBehavior | CancasBehavior[]) {
+        if (!this.behavior)
+            this.behavior = undefined;
+
+        if (Array.isArray(behavior))
+            this.behavior = [...this.behavior, ...behavior];
+        else
+            this.behavior.push(behavior);
     }
 
     setWidth(width?: number) {

@@ -4,13 +4,13 @@ import Canvas from "./Canvas";
 import AnnotationCollection from "./AnnotationCollection";
 import CollectionManifestCanvasRangeBase from "./CollectionManifestCanvasRangeBase";
 
-type Behavior = "auto-advance" | "continuous" | "individuals" | "no-auto-advance" | "no-nav" |
+type RangeBehavior = "auto-advance" | "continuous" | "individuals" | "no-auto-advance" | "no-nav" |
 "paged" | "sequence" | "thumbnail-nav" | "unordered";
 
 export default class Range extends CollectionManifestCanvasRangeBase {
 
     supplementary?: AnnotationCollection;
-    behavior?: Behavior[];
+    behavior?: RangeBehavior[];
     viewingDirection?: ViewingDirection;
     start?: AnnotationPage;
     items: (Canvas | Range)[];
@@ -31,8 +31,14 @@ export default class Range extends CollectionManifestCanvasRangeBase {
         this.start = start;
     }
 
-    setBehavior(behavior?: Behavior[]) {
-        this.behavior = behavior;
+    setBehavior(behavior?: RangeBehavior | RangeBehavior[]) {
+        if (!this.behavior)
+            this.behavior = undefined;
+
+        if (Array.isArray(behavior))
+            this.behavior = [...this.behavior, ...behavior];
+        else
+            this.behavior.push(behavior);
     }
 
     setItems(items: Canvas[]) {

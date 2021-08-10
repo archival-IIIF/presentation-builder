@@ -58,8 +58,14 @@ export default class Collection extends CollectionManifestCanvasRangeBase {
         this.viewingDirection = viewingDirection;
     }
 
-    setBehavior(behavior?: CollectionBehavior[]) {
-        this.behavior = behavior;
+    setBehavior(behavior?: CollectionBehavior | CollectionBehavior[]) {
+        if (!this.behavior)
+            this.behavior = undefined;
+
+        if (Array.isArray(behavior))
+            this.behavior = [...this.behavior, ...behavior];
+        else
+            this.behavior.push(behavior);
     }
 
     setServices(services?: (Service | AuthService)[]) {
