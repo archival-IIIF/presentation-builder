@@ -41,7 +41,6 @@ export {
     Collection,
     Image,
     Manifest,
-    Rendering,
     Resource,
     Service,
     TextResource,
