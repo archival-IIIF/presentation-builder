@@ -41,7 +41,7 @@ export default class Range extends CollectionManifestCanvasRangeBase {
             this.behavior.push(behavior);
     }
 
-    setItems(items?: (Canvas | Range)[]) {
+    setItems(items?: (Canvas | Range) | (Canvas | Range)[]) {
         if (!items) {
             this.items = undefined;
         }

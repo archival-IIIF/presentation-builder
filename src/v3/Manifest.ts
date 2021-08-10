@@ -25,7 +25,7 @@ export default class Manifest extends CollectionManifestCanvasRangeBase {
         this.setItems([]);
     }
 
-    setItems(items?: Canvas[]) {
+    setItems(items?: Canvas | Canvas[]) {
         if (!items) {
             this.items = undefined;
         }

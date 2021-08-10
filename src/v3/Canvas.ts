@@ -45,7 +45,7 @@ export default class Canvas extends CollectionManifestCanvasRangeBase {
         this.duration = duration;
     }
 
-    setItems(items?: AnnotationPage[]) {
+    setItems(items?: AnnotationPage | AnnotationPage[]) {
         if (!items) {
             this.items = undefined;
         }

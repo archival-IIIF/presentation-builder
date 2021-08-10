@@ -25,7 +25,7 @@ export default class AnnotationPage extends Base {
         if (nextId) this.next = {id: nextId, type};
     }
 
-    setItems(items?: Annotation[]) {
+    setItems(items?: Annotation | Annotation[]) {
         if (!items) {
             this.items = undefined;
         }
