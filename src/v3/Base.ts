@@ -109,7 +109,7 @@ export default class Base implements Ref {
         Base.setExtendedRef(this.seeAlso, seeAlso, 'en');
     }
 
-    setBehavior(behavior: string | string[]): void {
+    setBehavior(behavior?: string | string[]): void {
         if (!this.behavior)
             this.behavior = [];
 
