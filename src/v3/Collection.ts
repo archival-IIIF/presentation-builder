@@ -20,7 +20,7 @@ export type CollectionBehavior = "auto-advance" | "continuous" | "individuals" |
 
 export default class Collection extends CollectionManifestCanvasRangeBase {
 
-    items: ManifestRef[] | CollectionRef[];
+    items: (ManifestRef | CollectionRef)[];
     type: 'Collection';
     behavior?: CollectionBehavior[];
     services?: (Service | AuthService)[];
@@ -29,7 +29,7 @@ export default class Collection extends CollectionManifestCanvasRangeBase {
     constructor(id: string, label: Internationalize) {
         super(id, 'Collection', label);
         this.setContext('http://iiif.io/api/presentation/3/context.json')
-        this.setItems([]);
+        this.items = [];
     }
 
     addCollection(collection: Collection) {
@@ -70,5 +70,20 @@ export default class Collection extends CollectionManifestCanvasRangeBase {
 
     setServices(services?: (Service | AuthService)[]) {
         this.services = services;
+    }
+
+    setItems(items?: ManifestRef | CollectionRef | (ManifestRef | CollectionRef)[]) {
+        if (!items) {
+            this.items = undefined;
+        }
+
+        if (Array.isArray(items)) {
+            this.items = items;
+        } else {
+            if (!this.items) {
+                this.items = [];
+            }
+            this.items.push(items);
+        }
     }
 }
