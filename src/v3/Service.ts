@@ -47,7 +47,7 @@ export default class Service {
     }
 
     setId(id: string) {
-        if (id && Service.OLD_SERVICES.includes(type))
+        if (Service.OLD_SERVICES.includes(this.type))
             this['@id'] = id;
         else if (id)
             this['id'] = id;

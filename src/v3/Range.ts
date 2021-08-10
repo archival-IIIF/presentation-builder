@@ -13,7 +13,7 @@ export default class Range extends CollectionManifestCanvasRangeBase {
     behavior?: Behavior[];
     viewingDirection?: ViewingDirection;
     start?: AnnotationPage;
-    items: Canvas[];
+    items: (Canvas | Range)[];
 
     constructor(id: string) {
         super(id, 'Range');

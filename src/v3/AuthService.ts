@@ -46,7 +46,7 @@ export default class AuthService extends Service {
         this.failureHeader = failureHeader;
     }
 
-    setFailureDescriptionfailureDescription?: string) {
+    setFailureDescription(failureDescription?: string) {
         this.failureDescription = failureDescription;
     }
 

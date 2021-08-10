@@ -6,7 +6,7 @@ import AnnotationPage from "./AnnotationPage";
 import Range from "./Range";
 import CollectionManifestCanvasRangeBase from "./CollectionManifestCanvasRangeBase";
 
-export type = ManifestBehavior = "auto-advance" | "continuous" | "individuals" | "no-auto-advance" | "no-repeat" |
+export type ManifestBehavior = "auto-advance" | "continuous" | "individuals" | "no-auto-advance" | "no-repeat" |
     "paged" | "repeat" | "unordered";
 
 export default class Manifest extends CollectionManifestCanvasRangeBase {
@@ -38,7 +38,7 @@ export default class Manifest extends CollectionManifestCanvasRangeBase {
     }
 
     setServices(services?: (Service | AuthService)[]) {
-        this.servies = services;
+        this.services = services;
     }
 
     setStructures(structures?: Range[]) {

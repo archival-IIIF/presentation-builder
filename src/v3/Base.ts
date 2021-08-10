@@ -1,6 +1,5 @@
 import Service from './Service';
 import Resource from './Resource';
-import Rendering from "./Rendering";
 import Provider from "./Provider";
 
 export type Internationalized = { [language: string]: string[] };
@@ -8,7 +7,7 @@ export type Internationalize = string | string[] | Internationalized;
 export type LabelValue = { label: Internationalized; value: Internationalized };
 
 export type ExtendedRef = Ref & { format?: string; profile?: string; };
-type I18nExtendedRef = { id?: string; type?: string; label?: Internationalize; format?: string; profile?: string; };
+export type I18nExtendedRef = { id?: string; type?: string; label?: Internationalize; format?: string; profile?: string; };
 export type ViewingDirection = 'left-to-right' | 'right-to-left' | 'top-to-bottom' | 'bottom-to-top';
 
 export interface Ref {
@@ -39,7 +38,7 @@ export default class Base implements Ref {
 
     metadata?: LabelValue[];
     items?: Ref[];
-    rendering?: Rendering[];
+    rendering?: ExtendedRef[];
     service?: Service[];
 
     constructor(id?: string, type?: string, label?: Internationalize) {
@@ -143,10 +142,11 @@ export default class Base implements Ref {
     }
 
     setRendering(rendering: I18nExtendedRef | I18nExtendedRef[]): void {
-        if (!this.rendering)
-            this.rendering = [];
-
-        Base.setExtendedRef(this.rendering, rendering);
+        if (!this.rendering) {
+            this.rendering = undefined;
+        } else {
+            Base.setExtendedRef(this.rendering, rendering);
+        }
     }
 
     setService(service: Service): void {

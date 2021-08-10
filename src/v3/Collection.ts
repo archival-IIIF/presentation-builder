@@ -15,7 +15,7 @@ export interface CollectionRef extends Ref {
     thumbnail?: Resource[];
 }
 
-export type = CollectionBehavior = "auto-advance" | "continuous" | "individuals" | "multi-part" | "no-auto-advance" | "no-repeat" |
+export type CollectionBehavior = "auto-advance" | "continuous" | "individuals" | "multi-part" | "no-auto-advance" | "no-repeat" |
     "paged" | "repeat" | "together" | "unordered";
 
 export default class Collection extends CollectionManifestCanvasRangeBase {
@@ -58,11 +58,11 @@ export default class Collection extends CollectionManifestCanvasRangeBase {
         this.viewingDirection = viewingDirection;
     }
 
-    setBehavior(behavior?: ManifestBehavior[]) {
+    setBehavior(behavior?: CollectionBehavior[]) {
         this.behavior = behavior;
     }
 
-    setServices(services? (Service | AuthService)[]) {
-        this.servies = services;
+    setServices(services?: (Service | AuthService)[]) {
+        this.services = services;
     }
 }

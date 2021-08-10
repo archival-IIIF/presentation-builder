@@ -85,7 +85,7 @@ export default class Image {
         this.width = width;
     }
 
-    setHeight(height: string) {
+    setHeight(height: number) {
         this.height = height;
     }
 

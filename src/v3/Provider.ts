@@ -1,4 +1,4 @@
-import Base, {ExtendedRef, Internationalize, Internationalized} from './Base';
+import Base, {ExtendedRef, I18nExtendedRef, Internationalize, Internationalized} from './Base';
 import Resource from "./Resource";
 
 export default class Provider {
@@ -40,7 +40,7 @@ export default class Provider {
         }
     }
 
-    setLogo(logo?: Resource[]): void {
+    setLogo(logo?: Resource): void {
         if (!this.logo) {
             this.logo = undefined;
         } else {

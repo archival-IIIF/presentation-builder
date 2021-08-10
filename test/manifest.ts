@@ -6,7 +6,6 @@ import Annotation from '../src/v3/Annotation';
 import Service from '../src/v3/Service';
 import AuthService from '../src/v3/AuthService';
 import Resource from '../src/v3/Resource';
-import Rendering from '../src/v3/Rendering';
 import Provider from '../src/v3/Provider';
 import * as fs from "fs";
 import Range from "../src/v3/Range";
@@ -65,13 +64,12 @@ describe('Manifest V3', function() {
                 "profile": "https://example.org/profiles/bibliographic"
             }
         ];
-        const rendering = new Rendering(
-            'https://example.org/iiif/book1.pdf',
-            { "en": [ "Download as PDF" ] },
-            'application/pdf'
-        );
-        rendering.type = 'Text';
-        manifestActual.rendering = [rendering];
+        manifestActual.rendering = [{
+            id: 'https://example.org/iiif/book1.pdf',
+            label: { "en": [ "Download as PDF" ] },
+            format: 'application/pdf',
+            type: 'text'
+        }];
         manifestActual.partOf = [{
             "id": "https://example.org/collections/books/",
             "type": "Collection"

@@ -7,7 +7,6 @@ import Canvas from './v3/Canvas';
 import Collection from './v3/Collection';
 import Image from './v3/Image';
 import Manifest from './v3/Manifest';
-import Rendering from './v3/Rendering';
 import Resource from './v3/Resource';
 import Service from './v3/Service';
 import TextResource from './v3/TextResource';

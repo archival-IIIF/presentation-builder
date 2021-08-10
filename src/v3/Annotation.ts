@@ -5,7 +5,7 @@ import TextResource from './TextResource';
 
 export type XYWH = { x: number; y: number; w: number; h: number; };
 
-export type timeMode = "trim" | "scale" | "loop";
+export type TimeMode = "trim" | "scale" | "loop";
 
 export default class Annotation extends Base {
     textGranularity?: string;
