@@ -68,7 +68,7 @@ describe('Manifest V3', function() {
             id: 'https://example.org/iiif/book1.pdf',
             label: { "en": [ "Download as PDF" ] },
             format: 'application/pdf',
-            type: 'text'
+            type: 'Text'
         }];
         manifestActual.partOf = [{
             "id": "https://example.org/collections/books/",
