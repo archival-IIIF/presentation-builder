@@ -45,7 +45,7 @@ export default class Manifest extends CollectionManifestCanvasRangeBase {
         this.structures = structures;
     }
 
-    setViewingDirectory(viewingDirection: ViewingDirection) {
+    setViewingDirection(viewingDirection: ViewingDirection) {
         this.viewingDirection = viewingDirection;
     }
 }
