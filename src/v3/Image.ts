@@ -39,13 +39,14 @@ export type Features =
 
 export type Quality = "color" | "gray" | "bitonal" | "default";
 
+export type Profile = 'level0' | 'level1' | 'level2';
 
 export default class Image {
     "@context": "http://iiif.io/api/image/3/context.json" | string[]
     id: string;
     type: 'ImageService3';
     protocol: 'http://iiif.io/api/image';
-    profile: 'level0' | 'level1' | 'level2';
+    profile: Profile;
     width: number;
     height: number;
     sizes?: Size[];
@@ -70,6 +71,77 @@ export default class Image {
         this.profile = 'level2';
         this.width = width;
         this.height = height;
+    }
+
+    setId(id: string) {
+        this.id = id;
+    }
+
+    setProfile(profile: Profile) {
+        this.profile = profile;
+    }
+
+    setWidth(width: number) {
+        this.width = width;
+    }
+
+    setHeight(height: string) {
+        this.height = height;
+    }
+
+    setSizes(sizes?: Size[]) {
+        this.sizes = sizes;
+    }
+
+    setMaxWidth(maxWidth?: number) {
+        this.maxWidth = maxWidth;
+    }
+
+    setMaxHeight(maxHeight?: number) {
+        this.maxHeight = maxHeight;
+    }
+
+
+    setMaxArea(maxArea?: number) {
+        this.maxArea = maxArea;
+    }
+
+    setTiles(tiles?: Tiles[]) {
+        this.tiles = tiles;
+    }
+
+
+    setExtraFormats(extraFormats?: string[]) {
+        this.extraFormats = extraFormats;
+    }
+
+    setPreferredFormats(preferredFormats?: string[]) {
+        this.preferredFormats = preferredFormats;
+    }
+
+
+    setRights(rights?: string) {
+        this.rights = rights;
+    }
+
+    setExtraQualities(extraQualities?: Quality[]) {
+        this.extraQualities = extraQualities;
+    }
+
+    setExtraFeatures(extraFeatures?: Features[]) {
+        this.extraFeatures = extraFeatures;
+    }
+
+    setPartOf(partOf?: Ref[]) {
+        this.partOf = partOf;
+    }
+
+    setSeeAlso(seeAlso?: ExtendedRef[]) {
+        this.seeAlso = seeAlso;
+    }
+
+    setService(service?: Service[]) {
+        this.service = service;
     }
 
     setTier(tier: AccessTier | string, seperator: string): void {

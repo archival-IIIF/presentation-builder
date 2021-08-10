@@ -5,6 +5,7 @@ import Service from "./Service";
 import AuthService from "./AuthService";
 import AnnotationPage from "./AnnotationPage";
 import Canvas from "./Canvas";
+import CollectionManifestCanvasRangeBase from "./CollectionManifestCanvasRangeBase";
 
 export interface ManifestRef extends Ref {
     thumbnail?: Resource[];
@@ -14,19 +15,15 @@ export interface CollectionRef extends Ref {
     thumbnail?: Resource[];
 }
 
-export default class Collection extends Base {
+export type = CollectionBehavior = "auto-advance" | "continuous" | "individuals" | "multi-part" | "no-auto-advance" | "no-repeat" |
+    "paged" | "repeat" | "together" | "unordered";
+
+export default class Collection extends CollectionManifestCanvasRangeBase {
 
     items: ManifestRef[] | CollectionRef[];
-    label: Internationalized;
-    id: string;
     type: 'Collection';
-    behavior?: ("auto-advance" | "continuous" | "individuals" | "multi-part" | "no-auto-advance" | "no-repeat" |
-        "paged" | "repeat" | "together" | "unordered")[];
-    navDate?: string;
+    behavior?: CollectionBehavior[];
     services?: (Service | AuthService)[];
-    annotations?: AnnotationPage[];
-    placeholderCanvas?: Canvas;
-    accompanyingCanvas?: Canvas;
     viewingDirection?: ViewingDirection;
 
     constructor(id: string, label: Internationalize) {
@@ -59,5 +56,13 @@ export default class Collection extends Base {
 
     setViewingDirectory(viewingDirection: ViewingDirection) {
         this.viewingDirection = viewingDirection;
+    }
+
+    setBehavior(behavior?: ManifestBehavior[]) {
+        this.behavior = behavior;
+    }
+
+    setServices(services? (Service | AuthService)[]) {
+        this.servies = services;
     }
 }

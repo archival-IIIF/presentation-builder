@@ -26,6 +26,30 @@ export default class AuthService extends Service {
         this['@context'] = 'http://iiif.io/api/auth/1/context.json';
     }
 
+    setLabel(label?: string) {
+        this.label = label;
+    }
+
+    setHeader(header?: string) {
+        this.header = header;
+    }
+
+    setDescription(description?: string) {
+        this.description = description;
+    }
+
+    setConfirmLabel(confirmLabel?: string) {
+        this.confirmLabel = confirmLabel;
+    }
+
+    setFailureHeader(failureHeader?: string) {
+        this.failureHeader = failureHeader;
+    }
+
+    setFailureDescriptionfailureDescription?: string) {
+        this.failureDescription = failureDescription;
+    }
+
     setAuthTexts(authTexts: AuthTexts) {
         if (authTexts.label) this.label = authTexts.label;
         if (authTexts.header) this.header = authTexts.header;

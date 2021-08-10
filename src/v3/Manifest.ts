@@ -4,28 +4,45 @@ import Service from "./Service";
 import AuthService from "./AuthService";
 import AnnotationPage from "./AnnotationPage";
 import Range from "./Range";
+import CollectionManifestCanvasRangeBase from "./CollectionManifestCanvasRangeBase";
 
-export default class Manifest extends Base {
+export type = ManifestBehavior = "auto-advance" | "continuous" | "individuals" | "no-auto-advance" | "no-repeat" |
+    "paged" | "repeat" | "unordered";
+
+export default class Manifest extends CollectionManifestCanvasRangeBase {
 
     items: Canvas[];
-    label: Internationalized;
-    id: string;
     type: 'Manifest';
-    behavior?: ("auto-advance" | "continuous" | "individuals" | "no-auto-advance" | "no-repeat" |
-        "paged" | "repeat" | "unordered")[];
-    navDate?: string;
+    behavior?: ManifestBehavior[];
     start?: Canvas;
     services?: (Service | AuthService)[];
-    annotations?: AnnotationPage[];
     structures?: Range[];
-    placeholderCanvas?: Canvas;
-    accompanyingCanvas?: Canvas;
     viewingDirection?: ViewingDirection;
 
     constructor(id: string, label: Internationalize) {
         super(id, 'Manifest', label);
         this["@context"] = "http://iiif.io/api/presentation/3/context.json";
         this.items = [];
+    }
+
+    setItems(items: Canvas[]) {
+        this.items = items;
+    }
+
+    setBhavior(behavior?: ManifestBehavior[]) {
+        this.behavior = behavior;
+    }
+
+    setStart(start?: Canvas) {
+        this.start = start;
+    }
+
+    setServices(services?: (Service | AuthService)[]) {
+        this.servies = services;
+    }
+
+    setStructures(structures?: Range[]) {
+        this.structures = structures;
     }
 
     setViewingDirectory(viewingDirection: ViewingDirection) {

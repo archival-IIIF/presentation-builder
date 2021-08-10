@@ -45,4 +45,22 @@ export default class Service {
         else
             this.service = [this.service, service];
     }
+
+    setId(id: string) {
+        if (id && Service.OLD_SERVICES.includes(type))
+            this['@id'] = id;
+        else if (id)
+            this['id'] = id;
+    }
+
+    setType(type: string) {
+        if (Service.OLD_SERVICES.includes(type))
+            this['@type'] = type;
+        else
+            this['type'] = type;
+    }
+
+    setProfile(profile: string) {
+        this.profile = profile;
+    }
 }

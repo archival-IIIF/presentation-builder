@@ -1,21 +1,18 @@
 import Base from './Base';
 import AnnotationPage from './AnnotationPage';
+import CollectionManifestCanvasRangeBase from "./CollectionManifestCanvasRangeBase";
 
-export default class Canvas extends Base {
+type CancasBehavior = "auto-advance" | "facing-pages" | "no-auto-advance" | "non-paged";
 
-    items: AnnotationPage[] | undefined;
-    start?: AnnotationPage;
+export default class Canvas extends CollectionManifestCanvasRangeBase {
+
+    items?: AnnotationPage[];
     type: 'Canvas';
 
     width?: number;
     height?: number;
     duration?: number;
-    behavior?: ("auto-advance" | "facing-pages" | "no-auto-advance" | "non-paged")[];
-    navDate?: string;
-
-    annotations?: AnnotationPage[];
-    placeholderCanvas?: Canvas;
-    accompanyingCanvas?: Canvas;
+    behavior?: CancasBehavior[];
 
     constructor(id: string, width?: number | null, height?: number | null, duration?: number | null) {
         super(id, 'Canvas');
@@ -24,13 +21,23 @@ export default class Canvas extends Base {
         if (duration) this.duration = duration;
     }
 
-    setAnnotations(annotations: AnnotationPage | AnnotationPage[]): void {
-        if (!this.annotations)
-            this.annotations = [];
+    setBehavior(behavior?: CancasBehavior[]) {
+        this.behavior = behavior;
+    }
 
-        if (Array.isArray(annotations))
-            this.annotations = [...this.annotations, ...annotations];
-        else
-            this.annotations.push(annotations);
+    setWidth(width?: number) {
+        this.width = width;
+    }
+
+    setHeight(height?: number) {
+        this.height = height;
+    }
+
+    setDuration(duration?: number) {
+        this.duration = duration;
+    }
+
+    setItems(items?: AnnotationPage[]) {
+        this.items = items;
     }
 }

@@ -10,4 +10,16 @@ export default class TextResource extends Base {
         this.value = value;
         if (language) this.language = language;
     }
+
+    setFormat(format?: string) {
+        this.format = format;
+    }
+
+    setValue(value?: string) {
+        this.value = value;
+    }
+
+    setLanguage(language?: string) {
+        this.language = language;
+    }
 }

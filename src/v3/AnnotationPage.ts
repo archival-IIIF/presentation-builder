@@ -5,7 +5,7 @@ export default class AnnotationPage extends Base {
     prev?: Ref;
     next?: Ref;
 
-    items: Annotation[] | undefined;
+    items?: Annotation[];
     type: 'AnnotationPage';
 
     constructor(id: string) {
@@ -23,6 +23,10 @@ export default class AnnotationPage extends Base {
     setPrevAndNext(type: string, prevId?: string, nextId?: string) {
         if (prevId) this.prev = {id: prevId, type};
         if (nextId) this.next = {id: nextId, type};
+    }
+
+    setItems(items?: Annotation[]) {
+        this.items = items;
     }
 }
 
