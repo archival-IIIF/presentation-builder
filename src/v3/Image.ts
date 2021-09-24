@@ -1,5 +1,4 @@
-import {ExtendedRef, Ref} from "./Base";
-import Service from "./Service";
+import Base from './Base';
 
 interface Size {
     width: number;
@@ -12,43 +11,41 @@ export interface AccessTier {
 }
 
 export interface Tiles {
-    type?: "Tile";
+    type?: 'Tile';
     scaleFactors: number[];
     width: number;
     height?: number;
 }
 
 export type Features =
-    "baseUriRedirect" |
-    "canonicalLinkHeader" |
-    "cors" |
-    "jsonldMediaType" |
-    "mirroring" |
-    "profileLinkHeader" |
-    "regionByPct" |
-    "regionByPx" |
-    "regionSquare" |
-    "rotationArbitrary" |
-    "rotationBy90s" |
-    "sizeByConfinedWh" |
-    "sizeByH" |
-    "sizeByPct" |
-    "sizeByW" |
-    "sizeByWh" |
-    "sizeUpscaling";
-
-export type Quality = "color" | "gray" | "bitonal" | "default";
+    'baseUriRedirect' |
+    'canonicalLinkHeader' |
+    'cors' |
+    'jsonldMediaType' |
+    'mirroring' |
+    'profileLinkHeader' |
+    'regionByPct' |
+    'regionByPx' |
+    'regionSquare' |
+    'rotationArbitrary' |
+    'rotationBy90s' |
+    'sizeByConfinedWh' |
+    'sizeByH' |
+    'sizeByPct' |
+    'sizeByW' |
+    'sizeByWh' |
+    'sizeUpscaling';
 
 export type Profile = 'level0' | 'level1' | 'level2';
+export type Quality = 'color' | 'gray' | 'bitonal' | 'default';
 
-export default class Image {
-    "@context": "http://iiif.io/api/image/3/context.json" | string[]
-    id: string;
-    type: 'ImageService3';
-    protocol: 'http://iiif.io/api/image';
-    profile: Profile;
+export default class Image extends Base {
+    protocol = 'http://iiif.io/api/image';
+    profile: Profile = 'level2';
+
     width: number;
     height: number;
+
     sizes?: Size[];
     maxWidth?: number;
     maxHeight?: number;
@@ -59,89 +56,67 @@ export default class Image {
     rights?: string;
     extraQualities?: Quality[];
     extraFeatures?: Features[];
-    partOf?: Ref[];
-    seeAlso?: ExtendedRef[];
-    service?: Service[];
 
     constructor(id: string, width: number, height: number) {
-        this['@context'] = 'http://iiif.io/api/image/3/context.json';
-        this.id = id;
-        this.type = 'ImageService3'
-        this.protocol = 'http://iiif.io/api/image';
-        this.profile = 'level2';
+        super(id, 'ImageService3');
         this.width = width;
         this.height = height;
     }
 
-    setId(id: string) {
-        this.id = id;
+    setContext(context?: string | string[]): void {
+        this['@context'] = context || ['http://iiif.io/api/image/3/context.json'];
     }
 
-    setProfile(profile: Profile) {
+    setProfile(profile: Profile): void {
         this.profile = profile;
     }
 
-    setWidth(width: number) {
+    setWidth(width: number): void {
         this.width = width;
     }
 
-    setHeight(height: number) {
+    setHeight(height: number): void {
         this.height = height;
     }
 
-    setSizes(sizes?: Size[]) {
+    setSizes(sizes?: Size[]): void {
         this.sizes = sizes;
     }
 
-    setMaxWidth(maxWidth?: number) {
+    setMaxWidth(maxWidth?: number): void {
         this.maxWidth = maxWidth;
     }
 
-    setMaxHeight(maxHeight?: number) {
+    setMaxHeight(maxHeight?: number): void {
         this.maxHeight = maxHeight;
     }
 
-
-    setMaxArea(maxArea?: number) {
+    setMaxArea(maxArea?: number): void {
         this.maxArea = maxArea;
     }
 
-    setTiles(tiles?: Tiles[]) {
+    setTiles(tiles?: Tiles[]): void {
         this.tiles = tiles;
     }
 
-
-    setExtraFormats(extraFormats?: string[]) {
+    setExtraFormats(extraFormats?: string[]): void {
         this.extraFormats = extraFormats;
     }
 
-    setPreferredFormats(preferredFormats?: string[]) {
+    setPreferredFormats(preferredFormats?: string[]): void {
         this.preferredFormats = preferredFormats;
     }
 
-
-    setRights(rights?: string) {
+    setRights(rights?: string): void {
         this.rights = rights;
     }
 
-    setExtraQualities(extraQualities?: Quality[]) {
+    setExtraQualities(extraQualities?: Quality[]): void {
         this.extraQualities = extraQualities;
     }
 
-    setExtraFeatures(extraFeatures?: Features[]) {
+    setExtraFeatures(extraFeatures?: Features[]): void {
         this.extraFeatures = extraFeatures;
-    }
-
-    setPartOf(partOf?: Ref[]) {
-        this.partOf = partOf;
-    }
-
-    setSeeAlso(seeAlso?: ExtendedRef[]) {
-        this.seeAlso = seeAlso;
-    }
-
-    setService(service?: Service[]) {
-        this.service = service;
     }
 
     setTier(tier: AccessTier | string, seperator: string): void {

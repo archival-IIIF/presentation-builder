@@ -1,58 +1,41 @@
-import Base, {ViewingDirection} from './Base';
-import AnnotationPage from "./AnnotationPage";
-import Canvas from "./Canvas";
-import AnnotationCollection from "./AnnotationCollection";
-import CollectionManifestCanvasRangeBase from "./CollectionManifestCanvasRangeBase";
+import Base, {Internationalize, ViewingDirection} from './Base';
+import Canvas from './Canvas';
+import AnnotationPage from './AnnotationPage';
+import AnnotationCollection from './AnnotationCollection';
+import CollectionManifestCanvasRangeBase from './CollectionManifestCanvasRangeBase';
 
-type RangeBehavior = "auto-advance" | "continuous" | "individuals" | "no-auto-advance" | "no-nav" |
-"paged" | "sequence" | "thumbnail-nav" | "unordered";
+type RangeBehavior = 'auto-advance' | 'continuous' | 'individuals' | 'no-auto-advance' | 'no-nav' |
+    'paged' | 'sequence' | 'thumbnail-nav' | 'unordered';
 
 export default class Range extends CollectionManifestCanvasRangeBase {
+    items?: (Canvas | Range)[];
 
-    supplementary?: AnnotationCollection;
+    start?: AnnotationPage;
     behavior?: RangeBehavior[];
     viewingDirection?: ViewingDirection;
-    start?: AnnotationPage;
-    items: (Canvas | Range)[];
+    supplementary?: AnnotationCollection;
 
-    constructor(id: string) {
-        super(id, 'Range');
+    constructor(id: string, label?: Internationalize) {
+        super(id, 'Range', label);
     }
 
-    setViewingDirectory(viewingDirection: ViewingDirection) {
-        this.viewingDirection = viewingDirection;
+    setItems(items?: (Canvas | Range) | (Canvas | Range)[]): void {
+        this.items = Base.setArrayValue(items, this.items);
     }
 
-    setSupplementary(supplementary?: AnnotationCollection) {
-        this.supplementary = supplementary;
-    }
-
-    setStart(start?: AnnotationPage) {
+    setStart(start?: AnnotationPage): void {
         this.start = start;
     }
 
-    setBehavior(behavior?: RangeBehavior | RangeBehavior[]) {
-        if (!this.behavior)
-            this.behavior = undefined;
-
-        if (Array.isArray(behavior))
-            this.behavior = [...this.behavior, ...behavior];
-        else
-            this.behavior.push(behavior);
+    setBehavior(behavior?: RangeBehavior | RangeBehavior[]): void {
+        this.behavior = Base.setArrayValue(behavior, this.behavior);
     }
 
-    setItems(items?: (Canvas | Range) | (Canvas | Range)[]) {
-        if (!items) {
-            this.items = undefined;
-        }
+    setViewingDirectory(viewingDirection?: ViewingDirection): void {
+        this.viewingDirection = viewingDirection;
+    }
 
-        if (Array.isArray(items)) {
-            this.items = items;
-        } else {
-            if (!this.items) {
-                this.items = [];
-            }
-            this.items.push(items);
-        }
+    setSupplementary(supplementary?: AnnotationCollection): void {
+        this.supplementary = supplementary;
     }
 }

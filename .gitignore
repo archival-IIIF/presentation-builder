@@ -74,5 +74,9 @@ typings/
 # Serverless directories
 .serverless
 
+# IntelliJ
+.idea
+*.iml
+
 cache
 dist

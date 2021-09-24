@@ -9,8 +9,6 @@ import Image from './v3/Image';
 import Manifest from './v3/Manifest';
 import Resource from './v3/Resource';
 import Service from './v3/Service';
-import TextResource from './v3/TextResource';
-
 
 import {default as AnnotationV2} from './v2/Annotation';
 import {default as AnnotationListV2} from './v2/AnnotationList';
@@ -29,7 +27,6 @@ import {default as SequenceV2} from './v2/Sequence';
 import {default as TermListV2} from './v2/TermList';
 import {default as TextResourceV2} from './v2/TextResource';
 
-
 // without default
 export {
     Annotation,
@@ -43,7 +40,6 @@ export {
     Manifest,
     Resource,
     Service,
-    TextResource,
 
     AnnotationV2,
     AnnotationListV2,

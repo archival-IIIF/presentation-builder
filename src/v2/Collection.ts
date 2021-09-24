@@ -20,7 +20,6 @@ export default class Collection extends Base {
 
     constructor(id: string, label: string) {
         super(id, 'sc:Collection', label);
-        this['@context'] = 'http://iiif.io/api/presentation/2/context.json';
     }
 
     addCollection(collection: Collection): void {
