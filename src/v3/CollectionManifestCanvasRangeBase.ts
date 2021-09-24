@@ -1,16 +1,14 @@
-import Base from "./Base";
-import Canvas from "./Canvas";
-import AnnotationPage from "./AnnotationPage";
+import Base from './Base';
+import Canvas from './Canvas';
+import AnnotationPage from './AnnotationPage';
 
 export default class CollectionManifestCanvasRangeBase extends Base {
-
-    navDate?: string;
+    navDate?: Date;
     placeholderCanvas?: Canvas;
     accompanyingCanvas?: Canvas;
     annotations?: AnnotationPage[];
 
-
-    setNavDate(navDate?: string) {
+    setNavDate(navDate?: Date) {
         this.navDate = navDate;
     }
 
@@ -23,12 +21,6 @@ export default class CollectionManifestCanvasRangeBase extends Base {
     }
 
     setAnnotations(annotations: AnnotationPage | AnnotationPage[]): void {
-        if (!this.annotations)
-            this.annotations = [];
-
-        if (Array.isArray(annotations))
-            this.annotations = [...this.annotations, ...annotations];
-        else
-            this.annotations.push(annotations);
+        this.annotations = Base.setArrayValue(annotations, this.annotations);
     }
 }

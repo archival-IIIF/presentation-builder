@@ -1,12 +1,10 @@
 import Base, {Ref} from './Base';
-import Annotation from "./Annotation";
+import Annotation from './Annotation';
 
 export default class AnnotationPage extends Base {
     prev?: Ref;
     next?: Ref;
-
     items?: Annotation[];
-    type: 'AnnotationPage';
 
     constructor(id: string) {
         super(id, 'AnnotationPage');
@@ -20,24 +18,13 @@ export default class AnnotationPage extends Base {
         ];
     }
 
-    setPrevAndNext(type: string, prevId?: string, nextId?: string) {
+    setPrevAndNext(type: string, prevId?: string, nextId?: string): void {
         if (prevId) this.prev = {id: prevId, type};
         if (nextId) this.next = {id: nextId, type};
     }
 
-    setItems(items?: Annotation | Annotation[]) {
-        if (!items) {
-            this.items = undefined;
-        }
-
-        if (Array.isArray(items)) {
-            this.items = items;
-        } else {
-            if (!this.items) {
-                this.items = [];
-            }
-            this.items.push(items);
-        }
+    setItems(items?: Annotation | Annotation[]): void {
+        this.items = Base.setArrayValue(items, this.items);
     }
 }
 

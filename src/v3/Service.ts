@@ -21,7 +21,7 @@ export default class Service {
     '@type'?: string;
 
     profile: string;
-    service?: Service | Service[];
+    service?: Service[];
 
     constructor(id: string | undefined, type: string, profile: string) {
         if (id && Service.OLD_SERVICES.includes(type))
@@ -39,28 +39,12 @@ export default class Service {
 
     setService(service: Service): void {
         if (!this.service)
-            this.service = service;
-        else if (Array.isArray(this.service))
+            this.service = [service];
+        else
             this.service.push(service);
-        else
-            this.service = [this.service, service];
     }
 
-    setId(id: string) {
-        if (Service.OLD_SERVICES.includes(this.type))
-            this['@id'] = id;
-        else if (id)
-            this['id'] = id;
-    }
-
-    setType(type: string) {
-        if (Service.OLD_SERVICES.includes(type))
-            this['@type'] = type;
-        else
-            this['type'] = type;
-    }
-
-    setProfile(profile: string) {
+    setProfile(profile: string): void {
         this.profile = profile;
     }
 }

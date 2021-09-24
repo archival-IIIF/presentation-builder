@@ -1,5 +1,5 @@
 {
-  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "@context": ["http://www.w3.org/ns/anno.jsonld", "http://iiif.io/api/presentation/3/context.json"],
   "id": "https://example.org/iiif/book1/manifest",
   "type": "Manifest",
   "label": { "en": [ "Book 1" ] },
@@ -131,7 +131,7 @@
     "type": "Canvas"
   },
 
-  "services": [
+  "service": [
     {
       "@context": "http://iiif.io/api/auth/1/context.json",
       "@id": "https://example.org/iiif/auth/login",
@@ -140,7 +140,6 @@
       "label": "Login to Example Institution",
       "service": [
         {
-          "@context": "http://iiif.io/api/auth/1/context.json",
           "@id": "https://example.org/iiif/auth/token",
           "@type": "AuthTokenService1",
           "profile": "http://iiif.io/api/auth/1/token"
@@ -177,7 +176,6 @@
                     "profile": "level2",
                     "service": [
                       {
-                        "@context": "http://iiif.io/api/auth/1/context.json",
                         "@id": "https://example.org/iiif/auth/login",
                         "@type": "AuthCookieService1",
                         "profile": "http://iiif.io/api/auth/1/login"
@@ -201,7 +199,6 @@
       ]
     }
   ],
-
   "structures": [
     {
       "id": "https://example.org/iiif/book1/range/r0",

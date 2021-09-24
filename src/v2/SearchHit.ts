@@ -25,12 +25,12 @@ export default class SearchHit extends Base {
             this.annotations.push(annotation['@id'] as string);
     }
 
-    setBeforeAndAfter(before?: string, after?: string) {
+    setBeforeAndAfter(before?: string, after?: string): void {
         if (before) this.before = before;
         if (after) this.after = after;
     }
 
-    addTextQuoteSelector(exact: string, prefix?: string, suffix?: string) {
+    addTextQuoteSelector(exact: string, prefix?: string, suffix?: string): void {
         if (!this.selectors)
             this.selectors = [];
 

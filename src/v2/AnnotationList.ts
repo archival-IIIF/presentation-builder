@@ -12,15 +12,15 @@ export default class AnnotationList extends Base {
         super(id, 'sc:AnnotationList');
     }
 
-    setResources(resources: Annotation[]) {
+    setResources(resources: Annotation[]): void {
         this.resources = resources;
     }
 
-    setHits(hits: SearchHit[]) {
+    setHits(hits: SearchHit[]): void {
         this.hits = hits;
     }
 
-    setWithin(within: Within) {
+    setWithin(within: Within): void {
         super.setParent(within);
     }
 }

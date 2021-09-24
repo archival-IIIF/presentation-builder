@@ -25,7 +25,7 @@ export default class AuthService extends Base {
         if (context) this['@context'] = context;
     }
 
-    setAuthTexts(authTexts: AuthTexts) {
+    setAuthTexts(authTexts: AuthTexts): void {
         if (authTexts.label) this.label = authTexts.label;
         if (authTexts.header) this.header = authTexts.header;
         if (authTexts.description) this.description = authTexts.description;

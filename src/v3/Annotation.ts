@@ -1,21 +1,19 @@
 import Base from './Base';
 import Canvas from './Canvas';
 import Resource from './Resource';
-import TextResource from './TextResource';
 
+export type TimeMode = 'trim' | 'scale' | 'loop';
 export type XYWH = { x: number; y: number; w: number; h: number; };
 
-export type TimeMode = "trim" | "scale" | "loop";
-
 export default class Annotation extends Base {
-    textGranularity?: string;
     motivation: string;
-    body: Resource | TextResource;
-    target?: string;
-    type: 'Annotation';
-    timeMode?: TimeMode;
+    body: Resource;
 
-    constructor(id: string, resource: Resource | TextResource, motivation = 'painting') {
+    target?: string;
+    timeMode?: TimeMode;
+    textGranularity?: string;
+
+    constructor(id: string, resource: Resource, motivation = 'painting') {
         super(id, 'Annotation');
         this.motivation = motivation;
         this.body = resource;
@@ -27,7 +25,7 @@ export default class Annotation extends Base {
             this.target += `#xywh=${xywh.x},${xywh.y},${xywh.w},${xywh.h}`;
     }
 
-    setTarget(target?: string) {
+    setTarget(target?: string): void {
         this.target = target;
     }
 
@@ -35,11 +33,7 @@ export default class Annotation extends Base {
         this.timeMode = timeMode;
     }
 
-    setTextGranularity(textGranularity: string): void {
+    setTextGranularity(textGranularity?: string): void {
         this.textGranularity = textGranularity;
-    }
-
-    setMotivation(motivation: string) {
-        this.motivation = motivation;
     }
 }

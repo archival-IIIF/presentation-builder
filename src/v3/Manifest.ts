@@ -1,62 +1,40 @@
-import Base, {Internationalize, Internationalized, ViewingDirection} from './Base';
-import Canvas from "./Canvas";
-import Service from "./Service";
-import AuthService from "./AuthService";
-import AnnotationPage from "./AnnotationPage";
-import Range from "./Range";
-import CollectionManifestCanvasRangeBase from "./CollectionManifestCanvasRangeBase";
+import Base, {Internationalize, ViewingDirection} from './Base';
+import Range from './Range';
+import Canvas from './Canvas';
+import CollectionManifestCanvasRangeBase from './CollectionManifestCanvasRangeBase';
 
-export type ManifestBehavior = "auto-advance" | "continuous" | "individuals" | "no-auto-advance" | "no-repeat" |
-    "paged" | "repeat" | "unordered";
+export type ManifestBehavior =
+    'auto-advance' | 'continuous' | 'individuals' | 'no-auto-advance' | 'no-repeat' | 'paged' | 'repeat' | 'unordered';
 
 export default class Manifest extends CollectionManifestCanvasRangeBase {
-
-    items: Canvas[];
-    type: 'Manifest';
-    behavior?: ManifestBehavior[];
-    start?: Canvas;
-    services?: (Service | AuthService)[];
+    items?: Canvas[];
     structures?: Range[];
+
+    start?: Canvas;
+    behavior?: ManifestBehavior[];
     viewingDirection?: ViewingDirection;
 
     constructor(id: string, label: Internationalize) {
         super(id, 'Manifest', label);
-        this.setContext('http://iiif.io/api/presentation/3/context.json');
-        this.setItems([]);
     }
 
-    setItems(items?: Canvas | Canvas[]) {
-        if (!items) {
-            this.items = undefined;
-        }
-
-        if (Array.isArray(items)) {
-            this.items = items;
-        } else {
-            if (!this.items) {
-                this.items = [];
-            }
-            this.items.push(items);
-        }
+    setItems(items?: Canvas | Canvas[]): void {
+        this.items = Base.setArrayValue(items, this.items);
     }
 
-    setBhavior(behavior?: ManifestBehavior[]) {
-        this.behavior = behavior;
+    setStructures(range?: Range | Range[]): void {
+        this.structures = Base.setArrayValue(range, this.structures);
     }
 
-    setStart(start?: Canvas) {
+    setStart(start?: Canvas): void {
         this.start = start;
     }
 
-    setServices(services?: (Service | AuthService)[]) {
-        this.services = services;
+    setBehavior(behavior?: ManifestBehavior | ManifestBehavior[]): void {
+        this.behavior = Base.setArrayValue(behavior, this.behavior);
     }
 
-    setStructures(structures?: Range[]) {
-        this.structures = structures;
-    }
-
-    setViewingDirection(viewingDirection: ViewingDirection) {
+    setViewingDirection(viewingDirection?: ViewingDirection): void {
         this.viewingDirection = viewingDirection;
     }
 }

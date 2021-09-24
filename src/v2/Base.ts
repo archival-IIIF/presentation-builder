@@ -66,7 +66,8 @@ export default class Base implements Ref {
             this.related = [];
 
         if (Array.isArray(related))
-            related.forEach(related => this.setRelated(related));
+            for (const r of related)
+                this.setRelated(r);
         else if ((typeof related === 'object') && related.hasOwnProperty('id'))
             this.related.push({'@id': related.id, format: 'text/html', label: related.label});
     }
@@ -89,7 +90,8 @@ export default class Base implements Ref {
             this.metadata = [];
 
         if (Array.isArray(label))
-            label.forEach(md => this.addMetadata(md));
+            for (const md of label)
+                this.addMetadata(md);
         else if ((typeof label === 'object') && (label.hasOwnProperty('label') && label.hasOwnProperty('value')))
             this.metadata.push({label: label.label, value: label.value});
         else if (typeof label === 'string' && typeof value === 'string')
@@ -101,7 +103,8 @@ export default class Base implements Ref {
             this.seeAlso = [];
 
         if (Array.isArray(seeAlso))
-            seeAlso.forEach(sa => this.addSeeAlso(sa));
+            for (const sa of seeAlso)
+                this.addSeeAlso(sa);
         else if ((typeof seeAlso === 'object') && seeAlso.hasOwnProperty('id')) {
             const obj: SeeAlso = {'@id': seeAlso.id};
 
