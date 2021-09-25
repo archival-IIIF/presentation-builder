@@ -97,13 +97,6 @@
       "format": "text/html"
     }
   ],
-  "service": [
-    {
-      "id": "https://example.org/service/example",
-      "type": "ExampleExtensionService",
-      "profile": "https://example.org/docs/example-service.html"
-    }
-  ],
   "seeAlso": [
     {
       "id": "https://example.org/library/catalog/book1.xml",
@@ -133,6 +126,11 @@
 
   "service": [
     {
+      "id": "https://example.org/service/example",
+      "type": "ExampleExtensionService",
+      "profile": "https://example.org/docs/example-service.html"
+    },
+    {
       "@context": "http://iiif.io/api/auth/1/context.json",
       "@id": "https://example.org/iiif/auth/login",
       "@type": "AuthCookieService1",
@@ -140,6 +138,7 @@
       "label": "Login to Example Institution",
       "service": [
         {
+          "@context": "http://iiif.io/api/auth/1/context.json",
           "@id": "https://example.org/iiif/auth/token",
           "@type": "AuthTokenService1",
           "profile": "http://iiif.io/api/auth/1/token"
