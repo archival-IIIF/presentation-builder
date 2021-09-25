@@ -119,9 +119,9 @@ export default class Base implements Ref {
 
     setRendering(rendering: I18nExtendedRef | I18nExtendedRef[]): void {
         if (!this.rendering)
-            this.rendering = undefined;
-        else
-            Base.setExtendedRef(this.rendering, rendering);
+            this.rendering = [];
+
+        Base.setExtendedRef(this.rendering, rendering);
     }
 
     setService(service: Service): void {
