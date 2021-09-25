@@ -22,10 +22,13 @@ describe('Manifest V3', function () {
         const manifestActual = new Manifest('https://example.org/iiif/book1/manifest', {en: ['Book 1']});
         manifestActual.setContext();
         manifestActual.setMetadata(getMetadata());
+        assert.expect(manifestShould.metadata).to.eql(JSON.parse(JSON.stringify(manifestActual.metadata)));
         manifestActual.setSummary({'en': ['Book 1, written be Anne Author, published in Paris around 1400.']});
+        assert.expect(manifestShould.summary).to.eql(JSON.parse(JSON.stringify(manifestActual.summary)));
         const thumbnailResource = new Resource(
             'https://example.org/iiif/book1/page1/full/80,100/0/default.jpg',
             'Image',
+            undefined,
             'image/jpeg'
         );
         thumbnailResource.setService(new Service(
@@ -34,9 +37,11 @@ describe('Manifest V3', function () {
             'level1'
         ));
         manifestActual.setThumbnail(thumbnailResource);
+        assert.expect(manifestShould.thumbnail).to.eql(JSON.parse(JSON.stringify(manifestActual.thumbnail)));
         manifestActual.setViewingDirection('right-to-left');
         manifestActual.setBehavior('paged');
         manifestActual.setNavDate(new Date('1856-01-01T00:00:00Z'));
+        assert.expect(manifestShould.navDate).to.eql(JSON.parse(JSON.stringify(manifestActual.navDate)));
         manifestActual.setRights('https://creativecommons.org/licenses/by/4.0/');
         manifestActual.setAttribution('Provided by Example Organization');
         manifestActual.setProvider(getProvider());
@@ -50,6 +55,7 @@ describe('Manifest V3', function () {
             },
             type: 'Text'
         });
+        assert.expect(manifestShould.homepage).to.eql(JSON.parse(JSON.stringify(manifestActual.homepage)));
         manifestActual.setService(new Service(
             'https://example.org/service/example',
             'ExampleExtensionService',
@@ -61,6 +67,7 @@ describe('Manifest V3', function () {
             'format': 'text/xml',
             'profile': 'https://example.org/profiles/bibliographic'
         });
+        assert.expect(manifestShould.seeAlso).to.eql(JSON.parse(JSON.stringify(manifestActual.seeAlso)));
         manifestActual.setRendering({
             id: 'https://example.org/iiif/book1.pdf',
             label: {'en': ['Download as PDF']},
@@ -84,11 +91,15 @@ describe('Manifest V3', function () {
             'http://iiif.io/api/auth/1/token'
         ));
         manifestActual.setService(authService);
+        assert.expect(manifestShould.service).to.eql(JSON.parse(JSON.stringify(manifestActual.service)));
 
         manifestActual.setItems(getItems());
+        assert.expect(manifestShould.items).to.eql(JSON.parse(JSON.stringify(manifestActual.items)));
         manifestActual.setStructures(getStructures());
+        assert.expect(manifestShould.structures).to.eql(JSON.parse(JSON.stringify(manifestActual.structures)));
 
         manifestActual.setAnnotations(getAnnotations());
+        assert.expect(manifestShould.annotations).to.eql(JSON.parse(JSON.stringify(manifestActual.annotations)));
 
         assert.expect(manifestShould).to.eql(JSON.parse(JSON.stringify(manifestActual)));
     });
@@ -178,6 +189,7 @@ function getProvider() {
     const logoResource = new Resource(
         'https://example.org/service/inst1/full/max/0/default.png',
         'Image',
+        undefined,
         'image/png'
     );
     logoResource.setService(new Service('https://example.org/service/inst1', 'ImageService3', 'level2'));
