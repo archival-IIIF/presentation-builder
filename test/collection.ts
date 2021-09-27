@@ -21,7 +21,7 @@ describe('Collection V3', function () {
             'https://example.org/iiif/1/manifest',
             {'en': ['Example Manifest 1']}
         );
-        manifest.setThumbnail(Resource.createNewResource(
+        manifest.setThumbnail(Resource.createResource(
             'https://example.org/manifest1/thumbnail.jpg', 'Image', 'image/jpeg'));
         collectionActual.setItems(manifest);
 

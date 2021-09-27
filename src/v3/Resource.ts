@@ -45,12 +45,16 @@ export default class Resource extends Base {
         this.duration = duration;
     }
 
-    static createNewResource(id: string, type: string, format: string,
-                             width?: number | null, height?: number | null, duration?: number | null) {
+    static createResource(id: string, type: string, format: string,
+                          width?: number | null, height?: number | null, duration?: number | null) {
         return new Resource(id, type, undefined, format, undefined, width, height, duration);
     }
 
     static createTextResource(value: string, language?: string | null): Resource {
         return new Resource(undefined, 'TextualBody', value, 'text/plain', language);
+    }
+
+    static createTextResourceRef(id: string, language?: string | null): Resource {
+        return new Resource(id, 'TextualBody', undefined, 'text/plain', language);
     }
 }

@@ -25,10 +25,9 @@ describe('Manifest V3', function () {
         assert.expect(manifestShould.metadata).to.eql(JSON.parse(JSON.stringify(manifestActual.metadata)));
         manifestActual.setSummary({'en': ['Book 1, written be Anne Author, published in Paris around 1400.']});
         assert.expect(manifestShould.summary).to.eql(JSON.parse(JSON.stringify(manifestActual.summary)));
-        const thumbnailResource = new Resource(
+        const thumbnailResource = Resource.createResource(
             'https://example.org/iiif/book1/page1/full/80,100/0/default.jpg',
             'Image',
-            undefined,
             'image/jpeg'
         );
         thumbnailResource.setService(new Service(
@@ -121,7 +120,7 @@ function getItems() {
     canvas.setAnnotations(new AnnotationPage('https://example.org/iiif/book1/comments/p1/1'));
     canvas.setLabel({'none': ['p. 1']});
     const annotationPage = new AnnotationPage('https://example.org/iiif/book1/page/p1/1');
-    const resource = Resource.createNewResource(
+    const resource = Resource.createResource(
         'https://example.org/iiif/book1/page1/full/max/0/default.jpg',
         'Image',
         'image/jpeg',
@@ -186,10 +185,9 @@ function getProvider() {
         'format': 'application/ld+json',
         'profile': 'https://schema.org/'
     });
-    const logoResource = new Resource(
+    const logoResource = Resource.createResource(
         'https://example.org/service/inst1/full/max/0/default.png',
         'Image',
-        undefined,
         'image/png'
     );
     logoResource.setService(new Service('https://example.org/service/inst1', 'ImageService3', 'level2'));
@@ -200,9 +198,9 @@ function getProvider() {
 
 function getAnnotations() {
     const annotationPage = new AnnotationPage('https://example.org/iiif/book1/page/manifest/1');
-    const annotationRessource = new Resource(
+    const annotationRessource = Resource.createTextResourceRef(
         'https://example.org/iiif/book1/page/manifest/r1',
-        'TextualBody'
+        'en'
     );
     annotationRessource.setLanguage('en');
     const annotation = new Annotation(
