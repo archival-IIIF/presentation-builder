@@ -87,6 +87,10 @@ export default class Base implements Ref {
         };
     }
 
+    setRequiredStatement(requiredStatement: LabelValue): void {
+        this.requiredStatement = requiredStatement;
+    }
+
     setRights(rights: string): void {
         this.rights = rights;
     }

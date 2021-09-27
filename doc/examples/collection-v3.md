@@ -5,21 +5,27 @@
 ```typescript
 const c = new Collection(
     'https://example.org/iiif/collection/top',
-    { "en": [ "Collection for Example Organization" ] }
+    {"en": ["Collection for Example Organization"]}
 );
-c.summary = { "en": [ "Short summary of the Collection" ] };
-c.requiredStatement = {
-    "label": { "en": [ "Attribution" ] },
-    "value": { "en": [ "Provided by Example Organization" ] }
-};
+c.setContext("http://iiif.io/api/presentation/3/context.json");
+c.setSummary({"en": ["Short summary of the Collection"]});
+c.setRequiredStatement({
+    "label": {"en": ["Attribution"]},
+    "value": {"en": ["Provided by Example Organization"]}
+});
 const manifest = new Manifest(
     'https://example.org/iiif/1/manifest',
-    { "en": [ "Example Manifest 1" ] }
+    {"en": ["Example Manifest 1"]}
 );
-manifest.thumbnail = [
-    new Resource('https://example.org/manifest1/thumbnail.jpg', 'Image', 'image/jpeg')
-]
-c.addManifest(manifest);
+manifest.setThumbnail(
+    new Resource(
+        'https://example.org/manifest1/thumbnail.jpg',
+        'Image',
+        undefined,
+        'image/jpeg'
+    )
+);
+c.setItems(manifest);
 ```
 
 **JSON output**
