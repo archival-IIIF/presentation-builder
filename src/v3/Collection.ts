@@ -16,7 +16,7 @@ export default class Collection extends CollectionManifestCanvasRangeBase {
         super(id, 'Collection', label);
     }
 
-    setItems(items?: Collection | Manifest | Collection[] | Manifest[]): void {
+    setItems(items?: Collection | Manifest | (Collection | Manifest)[]): void {
         this.items = Base.setArrayValue(items, this.items);
     }
 
