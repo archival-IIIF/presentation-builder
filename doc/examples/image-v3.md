@@ -7,11 +7,15 @@
 ```typescript
 import {Image, Service} from "@archival-iiif/presentation-builder";
 
-const image = new Image(
+const i = new Image(
     'https://example.org/image-service/abcd1234/1E34750D-38DB-4825-A38A-B60A345E591C',
     6000,
     4000
 );
+i.setContext([
+    "http://example.org/extension/context1.json",
+    "http://iiif.io/api/image/3/context.json"
+]);
 ```
 
 **JSON output**
@@ -38,38 +42,38 @@ const image = new Image(
 ```typescript
 import {Image, Service} from "@archival-iiif/presentation-builder";
 
-const image = new Image(
+const i = new Image(
     'https://example.org/image-service/abcd1234/1E34750D-38DB-4825-A38A-B60A345E591C',
     6000,
     4000
 );
-image["@context"] = [
+i.setContext([
     "http://example.org/extension/context1.json",
     "http://iiif.io/api/image/3/context.json"
-];
-image.profile = 'level1';
-image.maxWidth = 3000;
-image.maxHeight = 2000;
-image.maxArea = 4000000;
-image.sizes = [
+]);
+i.setProfile('level1');
+i.setMaxWidth(3000);
+i.setMaxHeight(2000);
+i.setMaxArea(4000000);
+i.setSizes([
     { "width": 150, "height": 100 },
     { "width": 600, "height": 400 },
     { "width": 3000, "height": 2000 }
-];
-image.tiles = [
+]);
+i.setTiles([
     { "width": 512, "scaleFactors": [ 1, 2, 4 ] },
     { "width": 1024, "height": 2048, "scaleFactors": [ 8, 16 ] }
-];
-image.rights = "http://rightsstatements.org/vocab/InC-EDU/1.0/";
-image.preferredFormats = [ "png", "gif"];
-image.extraFormats = [ "png", "gif", "pdf" ];
-image.extraQualities = [ "color", "gray" ];
-image.extraFeatures = [ "canonicalLinkHeader", "rotationArbitrary", "profileLinkHeader" ];
-image.service = [new Service(
+]);
+i.setRights("http://rightsstatements.org/vocab/InC-EDU/1.0/");
+i.setPreferredFormats([ "png", "gif"]);
+i.setExtraFormats([ "png", "gif", "pdf" ]);
+i.setExtraQualities([ "color", "gray" ]);
+i.setExtraFeatures([ "canonicalLinkHeader", "rotationArbitrary", "profileLinkHeader" ]);
+i.setService(new Service(
     'https://example.org/service/example',
     'Service',
     'https://example.org/docs/example-service.html'
-)];
+));
 ```
 
 **JSON output**
