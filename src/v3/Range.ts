@@ -19,7 +19,7 @@ export default class Range extends CollectionManifestCanvasRangeBase {
         super(id, 'Range', label);
     }
 
-    setItems(items?: (Canvas | Range) | (Canvas | Range)[]): void {
+    setItems(items?: Canvas | Range | (Canvas | Range)[]): void {
         this.items = Base.setArrayValue(items, this.items);
     }
 
