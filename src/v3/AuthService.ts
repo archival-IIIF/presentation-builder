@@ -13,17 +13,17 @@ export interface AuthTexts {
 }
 
 export default class AuthService extends Service {
+    '@context' = 'http://iiif.io/api/auth/1/context.json';
+
     label?: string;
     header?: string;
     description?: string;
     confirmLabel?: string;
     failureHeader?: string;
     failureDescription?: string;
-    "@context": "http://iiif.io/api/auth/1/context.json";
 
     constructor(id: string | undefined, type: string, profile: string) {
         super(id, type, profile);
-        this["@context"] = "http://iiif.io/api/auth/1/context.json";
     }
 
     setLabel(label?: string): void {

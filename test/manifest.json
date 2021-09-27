@@ -1,22 +1,49 @@
 {
-  "@context": ["http://www.w3.org/ns/anno.jsonld", "http://iiif.io/api/presentation/3/context.json"],
+  "@context": [
+    "http://www.w3.org/ns/anno.jsonld",
+    "http://iiif.io/api/presentation/3/context.json"
+  ],
   "id": "https://example.org/iiif/book1/manifest",
   "type": "Manifest",
-  "label": { "en": [ "Book 1" ] },
+  "label": {
+    "en": [
+      "Book 1"
+    ]
+  },
   "metadata": [
     {
-      "label": { "en": [ "Author" ] },
-      "value": { "none": [ "Anne Author" ] }
-    },
-    {
-      "label": { "en": [ "Published" ] },
+      "label": {
+        "en": [
+          "Author"
+        ]
+      },
       "value": {
-        "en": [ "Paris, circa 1400" ],
-        "fr": [ "Paris, environ 1400" ]
+        "none": [
+          "Anne Author"
+        ]
       }
     },
     {
-      "label": { "en": [ "Notes" ] },
+      "label": {
+        "en": [
+          "Published"
+        ]
+      },
+      "value": {
+        "en": [
+          "Paris, circa 1400"
+        ],
+        "fr": [
+          "Paris, environ 1400"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Notes"
+        ]
+      },
       "value": {
         "en": [
           "Text of note 1",
@@ -25,11 +52,23 @@
       }
     },
     {
-      "label": { "en": [ "Source" ] },
-      "value": { "none": [ "<span>From: <a href=\"https://example.org/db/1.html\">Some Collection</a></span>" ] }
+      "label": {
+        "en": [
+          "Source"
+        ]
+      },
+      "value": {
+        "none": [
+          "<span>From: <a href=\"https://example.org/db/1.html\">Some Collection</a></span>"
+        ]
+      }
     }
   ],
-  "summary": { "en": [ "Book 1, written be Anne Author, published in Paris around 1400." ] },
+  "summary": {
+    "en": [
+      "Book 1, written be Anne Author, published in Paris around 1400."
+    ]
+  },
   "thumbnail": [
     {
       "id": "https://example.org/iiif/book1/page1/full/80,100/0/default.jpg",
@@ -45,23 +84,41 @@
     }
   ],
   "viewingDirection": "right-to-left",
-  "behavior": [ "paged" ],
+  "behavior": [
+    "paged"
+  ],
   "navDate": "1856-01-01T00:00:00.000Z",
   "rights": "https://creativecommons.org/licenses/by/4.0/",
   "requiredStatement": {
-    "label": { "en": [ "Attribution" ] },
-    "value": { "en": [ "Provided by Example Organization" ] }
+    "label": {
+      "en": [
+        "Attribution"
+      ]
+    },
+    "value": {
+      "en": [
+        "Provided by Example Organization"
+      ]
+    }
   },
   "provider": [
     {
       "id": "https://example.org/about",
       "type": "Agent",
-      "label": { "en": [ "Example Organization" ] },
+      "label": {
+        "en": [
+          "Example Organization"
+        ]
+      },
       "homepage": [
         {
           "id": "https://example.org/",
           "type": "Text",
-          "label": { "en": [ "Example Organization Homepage" ] },
+          "label": {
+            "en": [
+              "Example Organization Homepage"
+            ]
+          },
           "format": "text/html"
         }
       ],
@@ -93,7 +150,11 @@
     {
       "id": "https://example.org/info/book1/",
       "type": "Text",
-      "label": { "en": [ "Home page for Book 1" ] },
+      "label": {
+        "en": [
+          "Home page for Book 1"
+        ]
+      },
       "format": "text/html"
     }
   ],
@@ -109,7 +170,11 @@
     {
       "id": "https://example.org/iiif/book1.pdf",
       "type": "Text",
-      "label": { "en": [ "Download as PDF" ] },
+      "label": {
+        "en": [
+          "Download as PDF"
+        ]
+      },
       "format": "application/pdf"
     }
   ],
@@ -123,7 +188,6 @@
     "id": "https://example.org/iiif/book1/canvas/p2",
     "type": "Canvas"
   },
-
   "service": [
     {
       "id": "https://example.org/service/example",
@@ -146,13 +210,15 @@
       ]
     }
   ],
-
-
   "items": [
     {
       "id": "https://example.org/iiif/book1/canvas/p1",
       "type": "Canvas",
-      "label": { "none": [ "p. 1" ] },
+      "label": {
+        "none": [
+          "p. 1"
+        ]
+      },
       "height": 1000,
       "width": 750,
       "items": [
@@ -203,12 +269,20 @@
     {
       "id": "https://example.org/iiif/book1/range/r0",
       "type": "Range",
-      "label": { "en": [ "Table of Contents" ] },
+      "label": {
+        "en": [
+          "Table of Contents"
+        ]
+      },
       "items": [
         {
           "id": "https://example.org/iiif/book1/range/r1",
           "type": "Range",
-          "label": { "en": [ "Introduction" ] },
+          "label": {
+            "en": [
+              "Introduction"
+            ]
+          },
           "supplementary": {
             "id": "https://example.org/iiif/book1/annocoll/introTexts",
             "type": "AnnotationCollection"
@@ -223,7 +297,6 @@
       ]
     }
   ],
-
   "annotations": [
     {
       "id": "https://example.org/iiif/book1/page/manifest/1",
@@ -236,7 +309,8 @@
           "body": {
             "id": "https://example.org/iiif/book1/page/manifest/r1",
             "type": "TextualBody",
-            "language": "en"
+            "language": "en",
+            "format": "text/plain"
           },
           "target": "https://example.org/iiif/book1/manifest"
         }
