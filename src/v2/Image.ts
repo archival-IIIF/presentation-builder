@@ -19,23 +19,35 @@ export interface AccessTier {
     maxSize: number;
 }
 
+export interface Tiles {
+    "@type"?: 'iiif:Tile';
+    width: number;
+    height?: number;
+    scaleFactors: number[];
+}
+
+
 export default class Image extends Base {
-    profile: string | [string, ImageProfile] = 'http://iiif.io/api/image/2/level2.json';
+    profile: string | [string, ImageProfile?] = 'http://iiif.io/api/image/2/level2.json';
 
     protocol: string;
     width: number;
     height: number;
-    sizes: [];
+    sizes?: {width: number, height: number}[];
+    tiles?: Tiles[];
 
     constructor(id: string, width: number, height: number) {
         super(id);
         this.protocol = 'http://iiif.io/api/image';
         this.width = width;
         this.height = height;
-        this.sizes = [];
     }
 
-    setProfile(profile: ImageProfile): void {
+    setProfile(profile: string | [string, ImageProfile?]): void {
+        this.profile = profile;
+    }
+
+    setImageProfile(profile: ImageProfile): void {
         this.profile = ['http://iiif.io/api/image/2/level2.json', profile];
     }
 
@@ -50,6 +62,14 @@ export default class Image extends Base {
                 this.height = maxSize.height;
             }
         }
+    }
+
+    setSizes(sizes?: {width: number, height: number}[]) {
+        this.sizes = sizes;
+    }
+
+    setTiles(tiles?: Tiles[]) {
+        this.tiles = tiles;
     }
 
     static computeMaxSize(tier: AccessTier, width: number, height: number): Size {

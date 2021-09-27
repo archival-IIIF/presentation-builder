@@ -56,7 +56,7 @@ new Manifest('https://example.org/iiif/book1/manifest', 'Book 1');
 * [Image Information (Image API 3.0)](https://github.com/archival-IIIF/presentation-builder/blob/master/doc/examples/image-v3.md)
 * Manifest (Presentation API 2.1)
 * Collection (Presentation API 2.1)
-* Image Information (Image API 2.0)
+* [Image Information (Image API 2.1)](https://github.com/archival-IIIF/presentation-builder/blob/master/doc/examples/image-v3.md)
 
 ## License
 
