@@ -128,7 +128,7 @@ export default class Base implements Ref {
         Base.setExtendedRef(this.rendering, rendering);
     }
 
-    setService(service: Service): void {
+    setService(service: Service | Service[]): void {
         this.service = Base.setArrayValue(service, this.service);
     }
 
