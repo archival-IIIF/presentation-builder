@@ -35,7 +35,8 @@ yarn add @archival-iiif/presentation-builder
 ```typescript
 import {Manifest} from "@archival-iiif/presentation-builder";
 
-new Manifest('https://example.org/iiif/book1/manifest', 'Book 1');
+const m = new Manifest('https://example.org/iiif/book1/manifest', 'Book 1');
+m.setContext();
 ```
 
 **JSON output**
@@ -44,14 +45,17 @@ new Manifest('https://example.org/iiif/book1/manifest', 'Book 1');
 {
   "id": "https://example.org/iiif/book1/manifest", 
   "type": "Manifest",
-  "@context": "http://iiif.io/api/presentation/3/context.json",
-  "label": {"none": "Book 1"}
+  "@context": [
+    "http://www.w3.org/ns/anno.jsonld",
+    "http://iiif.io/api/presentation/3/context.json"
+  ],
+  "label": {"none": ["Book 1"]}
 }
 ```
 
 ### More examples
 
-* Manifest (Presentation API 3.0)
+* [Manifest (Presentation API 3.0)](https://github.com/archival-IIIF/presentation-builder/blob/master/doc/examples/manifest-v3.md)
 * [Collection (Presentation API 3.0)](https://github.com/archival-IIIF/presentation-builder/blob/master/doc/examples/collection-v3.md)
 * [Image Information (Image API 3.0)](https://github.com/archival-IIIF/presentation-builder/blob/master/doc/examples/image-v3.md)
 * Manifest (Presentation API 2.1)
