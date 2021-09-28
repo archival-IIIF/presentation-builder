@@ -3,6 +3,8 @@
 **Code**
 
 ```typescript
+import {Collection} from "@archival-iiif/presentation-builder";
+
 const c = new Collection(
     'https://example.org/iiif/collection/top',
     {"en": ["Collection for Example Organization"]}
