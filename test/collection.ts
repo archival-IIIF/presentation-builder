@@ -23,6 +23,9 @@ describe('Collection V3', function () {
         );
         manifest.setThumbnail(Resource.createResource(
             'https://example.org/manifest1/thumbnail.jpg', 'Image', 'image/jpeg'));
+        // the following two lines should not appear in json, because there are children
+        manifest.viewingDirection = 'left-to-right';
+        manifest.setContext();
         collectionActual.setItems(manifest);
 
         assert.expect(collectionShould).to.eql(JSON.parse(JSON.stringify(collectionActual)));
