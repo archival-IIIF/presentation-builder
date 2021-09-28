@@ -3,9 +3,9 @@
 **Code**
 
 ```typescript
-import {Image, Service} from "@archival-iiif/presentation-builder";
+import {ImageV2} from "@archival-iiif/presentation-builder";
 
-const i = new Image(
+const i = new ImageV2(
     'http://www.example.org/image-service/abcd1234/1E34750D-38DB-4825-A38A-B60A345E591C',
     6000,
     4000
