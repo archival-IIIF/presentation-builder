@@ -58,7 +58,7 @@ m.setContext();
 * [Manifest (Presentation API 3.0)](https://github.com/archival-IIIF/presentation-builder/blob/master/doc/examples/manifest-v3.md)
 * [Collection (Presentation API 3.0)](https://github.com/archival-IIIF/presentation-builder/blob/master/doc/examples/collection-v3.md)
 * [Image Information (Image API 3.0)](https://github.com/archival-IIIF/presentation-builder/blob/master/doc/examples/image-v3.md)
-* Manifest (Presentation API 2.1)
+* [Manifest (Presentation API 2.1)](https://github.com/archival-IIIF/presentation-builder/blob/master/doc/examples/manifest-v2.md)
 * Collection (Presentation API 2.1)
 * [Image Information (Image API 2.1)](https://github.com/archival-IIIF/presentation-builder/blob/master/doc/examples/image-v2.md)
 
