@@ -1,9 +1,9 @@
 import * as assert from 'chai';
-import {default as ImageV2} from "../../src/v2/Image";
+import {Image} from "../../src/v2";
 
 describe('Doc: Simple image V3', function () {
     it('Image should equal', function () {
-        const i = new ImageV2(
+        const i = new Image(
             'http://www.example.org/image-service/abcd1234/1E34750D-38DB-4825-A38A-B60A345E591C',
             6000,
             4000

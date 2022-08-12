@@ -1,9 +1,9 @@
-import {CollectionV2, Manifest, Resource} from "../../src";
+import {Collection} from "../../src/v2";
 import * as assert from 'chai';
 
 describe('Doc: Collection V2', function () {
     it('Collections should equal', function () {
-        const c = new CollectionV2(
+        const c = new Collection(
             'https://example.org/iiif/collection/top',
             'Collection for Example Organization'
         );

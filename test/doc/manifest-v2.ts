@@ -1,9 +1,9 @@
-import {ManifestV2} from "../../src";
+import {Manifest} from "../../src/v2";
 import * as assert from 'chai';
 
 describe('Doc: Manifest V2', function () {
     it('Manifest should equal', function () {
-        const m = new ManifestV2('https://example.org/iiif/book1/manifest', 'Book 1');
+        const m = new Manifest('https://example.org/iiif/book1/manifest', 'Book 1');
         m.setContext();
 
         const should = {

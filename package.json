@@ -1,19 +1,23 @@
 {
   "name": "@archival-iiif/presentation-builder",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "license": "MIT",
   "main": "dist/index.js",
   "files": [
     "dist"
   ],
   "exports": {
-    "v2": "./dist/v2/index.js",
-    "v3": "./dist/v3/index.js"
+    "./v2": "./dist/v2/index.js",
+    "./v3": "./dist/v3/index.js"
   },
   "typesVersions": {
     "*": {
-      "v2": ["dist/v2/index.d.ts"],
-      "v3": ["dist/v3/index.d.ts"]
+      "v2": [
+        "dist/v2/index.d.ts"
+      ],
+      "v3": [
+        "dist/v3/index.d.ts"
+      ]
     }
   },
   "types": "dist/index.d.ts",

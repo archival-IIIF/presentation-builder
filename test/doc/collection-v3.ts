@@ -1,4 +1,4 @@
-import {Collection, Manifest, Resource} from "../../src";
+import {Collection, Manifest, Resource} from "../../src/v3";
 import * as assert from 'chai';
 
 describe('Doc: Collection V3', function () {

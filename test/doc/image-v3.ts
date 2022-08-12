@@ -1,4 +1,4 @@
-import {Image, Service} from "../../src";
+import {Image, Service} from "../../src/v3";
 import * as assert from 'chai';
 
 describe('Doc: Simple image V3', function () {

@@ -1,4 +1,4 @@
-import {Manifest} from "../../src";
+import {Manifest} from "../../src/v3";
 import * as assert from 'chai';
 
 describe('Doc: Manifest V3', function () {
