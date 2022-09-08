@@ -3,9 +3,9 @@
 **Code**
 
 ```typescript
-import {ManifestV2} from "@archival-iiif/presentation-builder";
+import {Manifest} from "@archival-iiif/presentation-builder/v2";
 
-const m = new ManifestV2('https://example.org/iiif/book1/manifest', 'Book 1');
+const m = new Manifest('https://example.org/iiif/book1/manifest', 'Book 1');
 m.setContext();
 ```
 

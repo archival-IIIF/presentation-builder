@@ -3,9 +3,9 @@
 **Code**
 
 ```typescript
-import {CollectionV2} from "@archival-iiif/presentation-builder";
+import {Collection} from "@archival-iiif/presentation-builder/v2";
 
-const c = new CollectionV2(
+const c = new Collection(
     'https://example.org/iiif/collection/top',
     'Collection for Example Organization'
 );

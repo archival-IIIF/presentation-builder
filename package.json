@@ -1,12 +1,13 @@
 {
   "name": "@archival-iiif/presentation-builder",
-  "version": "1.4.4",
+  "version": "1.5.0",
   "license": "MIT",
   "main": "dist/index.js",
   "files": [
     "dist"
   ],
   "exports": {
+    ".": "./dist/v3/index.js",
     "./v2": "./dist/v2/index.js",
     "./v3": "./dist/v3/index.js"
   },
