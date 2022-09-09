@@ -1,8 +1,9 @@
 {
   "name": "@archival-iiif/presentation-builder",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "dist/v3/index.js",
+  "types": "dist/v3/index.d.ts",
   "files": [
     "dist"
   ],
@@ -21,7 +22,6 @@
       ]
     }
   },
-  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "mocha -r ts-node/register test/**/*.ts"
