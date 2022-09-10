@@ -23,8 +23,16 @@ export default class AnnotationPage extends Base {
         if (nextId) this.next = {id: nextId, type};
     }
 
-    setItems(items?: Annotation | Annotation[]): void {
-        this.items = Base.setArrayValue(items, this.items);
+    setItems(items: undefined | Annotation[]): void {
+        this.items = items;
+    }
+
+    addItem(item: Annotation): void {
+        if (!this.items) {
+            this.items = [item];
+        } else {
+            this.items.push(item);
+        }
     }
 }
 

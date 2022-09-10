@@ -31,11 +31,27 @@ export default class Canvas extends CollectionManifestCanvasRangeBase {
         this.duration = duration;
     }
 
-    setItems(items?: AnnotationPage | AnnotationPage[]): void {
-        this.items = Base.setArrayValue(items, this.items);
+    setItems(items: AnnotationPage[] | undefined): void {
+        this.items = items;
     }
 
-    setBehavior(behavior?: CanvasBehavior | CanvasBehavior[]): void {
-        this.behavior = Base.setArrayValue(behavior, this.behavior);
+    addItem(item: AnnotationPage): void {
+        if (!this.items) {
+            this.items = [item];
+        } else {
+            this.items.push(item);
+        }
+    }
+
+    setBehavior(behaviors: CanvasBehavior[] | undefined): void {
+        this.behavior = behaviors;
+    }
+
+    addBehavior(behavior: CanvasBehavior): void {
+        if (!this.behavior) {
+            this.behavior = [behavior];
+        } else {
+            this.behavior.push(behavior);
+        }
     }
 }

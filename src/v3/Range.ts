@@ -19,16 +19,32 @@ export default class Range extends CollectionManifestCanvasRangeBase {
         super(id, 'Range', label);
     }
 
-    setItems(items?: Canvas | Range | (Canvas | Range)[]): void {
-        this.items = Base.setArrayValue(items, this.items);
+    setItems(items: undefined | (Canvas | Range)[]): void {
+        this.items = items;
+    }
+
+    addItem(item: Canvas | Range): void {
+        if (!this.items) {
+            this.items = [item];
+        } else {
+            this.items.push(item);
+        }
     }
 
     setStart(start?: AnnotationPage): void {
         this.start = start;
     }
 
-    setBehavior(behavior?: RangeBehavior | RangeBehavior[]): void {
-        this.behavior = Base.setArrayValue(behavior, this.behavior);
+    setBehavior(behaviors: undefined | RangeBehavior[]): void {
+        this.behavior = behaviors;
+    }
+
+    addBehavior(behavior: RangeBehavior): void {
+        if (!this.behavior) {
+            this.behavior = [behavior];
+        } else {
+            this.behavior.push(behavior);
+        }
     }
 
     setViewingDirectory(viewingDirection?: ViewingDirection): void {

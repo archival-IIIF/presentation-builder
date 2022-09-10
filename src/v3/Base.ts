@@ -128,8 +128,16 @@ export default class Base implements Ref {
         Base.setExtendedRef(this.rendering, rendering);
     }
 
-    setService(service: Service | Service[]): void {
-        this.service = Base.setArrayValue(service, this.service);
+    setService(service: Service[] | undefined): void {
+        this.service = service;
+    }
+
+    addService(service: Service): void {
+        if (!this.service) {
+            this.service = [service];
+        } else {
+            this.service.push(service);
+        }
     }
 
     protected static i18n(text: Internationalize, lang: string = 'none'): Internationalized {

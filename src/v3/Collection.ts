@@ -16,15 +16,31 @@ export default class Collection extends CollectionManifestCanvasRangeBase {
         super(id, 'Collection', label);
     }
 
-    setItems(items?: Collection | Manifest | (Collection | Manifest)[]): void {
-        this.items = Base.setArrayValue(items, this.items);
+    setItems(items: (Collection | Manifest)[] | undefined): void {
+        this.items = items;
+    }
+
+    addItem(item: Collection | Manifest): void {
+        if (!this.items) {
+            this.items = [item];
+        } else {
+            this.items.push(item);
+        }
     }
 
     setViewingDirectory(viewingDirection?: ViewingDirection): void {
         this.viewingDirection = viewingDirection;
     }
 
-    setBehavior(behavior?: CollectionBehavior | CollectionBehavior[]) {
-        this.behavior = Base.setArrayValue(behavior, this.behavior);
+    setBehavior(behavior: CollectionBehavior[] | undefined) {
+        this.behavior = behavior;
+    }
+
+    addBehavior(behavior: CollectionBehavior) {
+        if (!this.behavior) {
+            this.behavior = [behavior];
+        } else {
+            this.behavior.push(behavior);
+        }
     }
 }

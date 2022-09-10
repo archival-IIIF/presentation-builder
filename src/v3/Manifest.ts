@@ -18,20 +18,44 @@ export default class Manifest extends CollectionManifestCanvasRangeBase {
         super(id, 'Manifest', label);
     }
 
-    setItems(items?: Canvas | Canvas[]): void {
-        this.items = Base.setArrayValue(items, this.items);
+    setItems(items: undefined | Canvas[]): void {
+        this.items = items;
     }
 
-    setStructures(range?: Range | Range[]): void {
-        this.structures = Base.setArrayValue(range, this.structures);
+    addItem(item: Canvas): void {
+        if (!this.items) {
+            this.items = [item];
+        } else {
+            this.items.push(item);
+        }
+    }
+
+    setStructures(structures?: Range[] | undefined): void {
+        this.structures = structures;
+    }
+
+    addStructure(structure: Range): void {
+        if (!this.structures) {
+            this.structures = [structure];
+        } else {
+            this.structures.push(structure);
+        }
     }
 
     setStart(start?: Canvas): void {
         this.start = start;
     }
 
-    setBehavior(behavior?: ManifestBehavior | ManifestBehavior[]): void {
-        this.behavior = Base.setArrayValue(behavior, this.behavior);
+    setBehavior(behaviors: ManifestBehavior[] | undefined): void {
+        this.behavior = behaviors;
+    }
+
+    addBehavior(behavior: ManifestBehavior): void {
+        if (!this.behavior) {
+            this.behavior = [behavior];
+        } else {
+            this.behavior.push(behavior);
+        }
     }
 
     setViewingDirection(viewingDirection?: ViewingDirection): void {

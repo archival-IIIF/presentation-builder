@@ -15,8 +15,16 @@ export default class AnnotationCollection extends Base {
         if (lastId) this.last = {id: lastId, type};
     }
 
-    setItems(items?: AnnotationPage | AnnotationPage[]): void {
-        this.items = Base.setArrayValue(items, this.items);
+    setItems(items: undefined | AnnotationPage[]): void {
+        this.items = items;
+    }
+
+    addItem(item: AnnotationPage): void {
+        if (!this.items) {
+            this.items = [item];
+        } else {
+            this.items.push(item);
+        }
     }
 }
 

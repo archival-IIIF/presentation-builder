@@ -20,7 +20,15 @@ export default class CollectionManifestCanvasRangeBase extends Base {
         this.accompanyingCanvas = accompanyingCanvas;
     }
 
-    setAnnotations(annotations: AnnotationPage | AnnotationPage[]): void {
-        this.annotations = Base.setArrayValue(annotations, this.annotations);
+    setAnnotations(annotations: AnnotationPage[] | undefined): void {
+        this.annotations = annotations;
+    }
+
+    addAnnotation(annotation: AnnotationPage): void {
+        if (!this.annotations) {
+            this.annotations = [annotation];
+        } else {
+            this.annotations.push(annotation);
+        }
     }
 }
