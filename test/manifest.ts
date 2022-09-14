@@ -30,15 +30,15 @@ describe('Manifest V3', function () {
             'Image',
             'image/jpeg'
         );
-        thumbnailResource.setService(new Service(
+        thumbnailResource.setService([new Service(
             'https://example.org/iiif/book1/page1',
             'ImageService3',
             'level1'
-        ));
+        )]);
         manifestActual.setThumbnail(thumbnailResource);
         assert.expect(manifestShould.thumbnail).to.eql(JSON.parse(JSON.stringify(manifestActual.thumbnail)));
         manifestActual.setViewingDirection('right-to-left');
-        manifestActual.setBehavior('paged');
+        manifestActual.setBehaviors(['paged']);
         manifestActual.setNavDate(new Date('1856-01-01T00:00:00Z'));
         assert.expect(manifestShould.navDate).to.eql(JSON.parse(JSON.stringify(manifestActual.navDate)));
         manifestActual.setRights('https://creativecommons.org/licenses/by/4.0/');
@@ -55,11 +55,11 @@ describe('Manifest V3', function () {
             type: 'Text'
         });
         assert.expect(manifestShould.homepage).to.eql(JSON.parse(JSON.stringify(manifestActual.homepage)));
-        manifestActual.setService(new Service(
+        manifestActual.setService([new Service(
             'https://example.org/service/example',
             'ExampleExtensionService',
             'https://example.org/docs/example-service.html'
-        ));
+        )]);
         manifestActual.setSeeAlso({
             'id': 'https://example.org/library/catalog/book1.xml',
             'type': 'Dataset',
@@ -89,7 +89,7 @@ describe('Manifest V3', function () {
             'AuthTokenService1',
             'http://iiif.io/api/auth/1/token'
         ));
-        manifestActual.setService(authService);
+        manifestActual.setService([authService]);
         assert.expect(manifestShould.service).to.eql(JSON.parse(JSON.stringify(manifestActual.service)));
 
         manifestActual.setItems(getItems());
@@ -109,15 +109,15 @@ function getStructures() {
     const range1 = new Range('https://example.org/iiif/book1/range/r1', {'en': ['Introduction']});
     range1.setSupplementary(new AnnotationCollection('https://example.org/iiif/book1/annocoll/introTexts'));
     const canvas = new Canvas('https://example.org/iiif/book1/canvas/p1');
-    range1.setItems(canvas);
-    range0.setItems(range1);
+    range1.setItems([canvas]);
+    range0.setItems([range1]);
 
-    return range0;
+    return [range0];
 }
 
 function getItems() {
     const canvas = new Canvas('https://example.org/iiif/book1/canvas/p1', 750, 1000);
-    canvas.setAnnotations(new AnnotationPage('https://example.org/iiif/book1/comments/p1/1'));
+    canvas.setAnnotations([new AnnotationPage('https://example.org/iiif/book1/comments/p1/1')]);
     canvas.setLabel({'none': ['p. 1']});
     const annotationPage = new AnnotationPage('https://example.org/iiif/book1/page/p1/1');
     const resource = Resource.createResource(
@@ -133,13 +133,13 @@ function getItems() {
         'AuthCookieService1',
         'http://iiif.io/api/auth/1/login')
     );
-    resource.setService(service);
+    resource.setService([service]);
     const annotation = new Annotation('https://example.org/iiif/book1/annotation/p0001-image', resource);
     annotation.setTarget('https://example.org/iiif/book1/canvas/p1');
-    annotationPage.setItems(annotation);
-    canvas.setItems(annotationPage);
+    annotationPage.setItems([annotation]);
+    canvas.setItems([annotationPage]);
 
-    return canvas;
+    return [canvas];
 }
 
 function getMetadata(): LabelValue[] {
@@ -190,7 +190,7 @@ function getProvider() {
         'Image',
         'image/png'
     );
-    logoResource.setService(new Service('https://example.org/service/inst1', 'ImageService3', 'level2'));
+    logoResource.setService([new Service('https://example.org/service/inst1', 'ImageService3', 'level2')]);
     provider.setLogo(logoResource);
 
     return provider;
@@ -209,6 +209,6 @@ function getAnnotations() {
         'commenting'
     );
     annotation.setTarget('https://example.org/iiif/book1/manifest');
-    annotationPage.setItems(annotation);
-    return annotationPage;
+    annotationPage.setItems([annotation]);
+    return [annotationPage];
 }
