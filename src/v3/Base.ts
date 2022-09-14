@@ -69,15 +69,15 @@ export default class Base implements Ref {
     }
 
     setThumbnail(resource: Resource): void {
-        this.thumbnail = Base.setArrayValue(resource, this.thumbnail);
+        this.thumbnail = [resource];
     }
 
     setProvider(provider: Provider): void {
-        this.provider = Base.setArrayValue(provider, this.provider);
+        this.provider = [provider];
     }
 
     setLogo(logo: Resource): void {
-        this.logo = Base.setArrayValue(logo, this.logo);
+        this.logo = [logo];
     }
 
     setAttribution(attribution: string): void {
@@ -157,19 +157,5 @@ export default class Base implements Ref {
                 ...convert,
                 label: convert.label ? Base.i18n(convert.label, lang) : undefined,
             });
-    }
-
-    protected static setArrayValue<R>(value?: R | R[], property?: R[]): R[] | undefined {
-        if (value === null || value === undefined)
-            return property;
-
-        if (property === null || property === undefined)
-            property = [];
-
-        if (Array.isArray(value))
-            return [...property, ...value];
-
-        property.push(value);
-        return property;
     }
 }
