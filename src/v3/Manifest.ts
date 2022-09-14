@@ -11,7 +11,7 @@ export default class Manifest extends CollectionManifestCanvasRangeBase {
     structures?: Range[];
 
     start?: Canvas;
-    behavior?: ManifestBehavior[];
+    behaviors?: ManifestBehavior[];
     viewingDirection?: ViewingDirection;
 
     constructor(id: string, label: Internationalize) {
@@ -46,15 +46,15 @@ export default class Manifest extends CollectionManifestCanvasRangeBase {
         this.start = start;
     }
 
-    setBehavior(behaviors: ManifestBehavior[] | undefined): void {
-        this.behavior = behaviors;
+    setBehaviors(behaviors: ManifestBehavior[] | undefined): void {
+        this.behaviors = behaviors;
     }
 
     addBehavior(behavior: ManifestBehavior): void {
-        if (!this.behavior) {
-            this.behavior = [behavior];
+        if (!this.behaviors) {
+            this.behaviors = [behavior];
         } else {
-            this.behavior.push(behavior);
+            this.behaviors.push(behavior);
         }
     }
 

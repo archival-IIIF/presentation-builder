@@ -9,7 +9,7 @@ export type CollectionBehavior =
 export default class Collection extends CollectionManifestCanvasRangeBase {
     items?: (Manifest | Collection)[];
 
-    behavior?: CollectionBehavior[];
+    behaviors?: CollectionBehavior[];
     viewingDirection?: ViewingDirection;
 
     constructor(id: string, label: Internationalize) {
@@ -32,15 +32,15 @@ export default class Collection extends CollectionManifestCanvasRangeBase {
         this.viewingDirection = viewingDirection;
     }
 
-    setBehavior(behavior: CollectionBehavior[] | undefined) {
-        this.behavior = behavior;
+    setBehaviors(behavior: CollectionBehavior[] | undefined) {
+        this.behaviors = behavior;
     }
 
     addBehavior(behavior: CollectionBehavior) {
-        if (!this.behavior) {
-            this.behavior = [behavior];
+        if (!this.behaviors) {
+            this.behaviors = [behavior];
         } else {
-            this.behavior.push(behavior);
+            this.behaviors.push(behavior);
         }
     }
 }

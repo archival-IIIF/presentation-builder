@@ -11,7 +11,7 @@ export default class Range extends CollectionManifestCanvasRangeBase {
     items?: (Canvas | Range)[];
 
     start?: AnnotationPage;
-    behavior?: RangeBehavior[];
+    behaviors?: RangeBehavior[];
     viewingDirection?: ViewingDirection;
     supplementary?: AnnotationCollection;
 
@@ -35,15 +35,15 @@ export default class Range extends CollectionManifestCanvasRangeBase {
         this.start = start;
     }
 
-    setBehavior(behaviors: undefined | RangeBehavior[]): void {
-        this.behavior = behaviors;
+    setBehaviors(behaviors: undefined | RangeBehavior[]): void {
+        this.behaviors = behaviors;
     }
 
     addBehavior(behavior: RangeBehavior): void {
-        if (!this.behavior) {
-            this.behavior = [behavior];
+        if (!this.behaviors) {
+            this.behaviors = [behavior];
         } else {
-            this.behavior.push(behavior);
+            this.behaviors.push(behavior);
         }
     }
 

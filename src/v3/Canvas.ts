@@ -10,7 +10,7 @@ export default class Canvas extends CollectionManifestCanvasRangeBase {
     duration?: number;
 
     items?: AnnotationPage[];
-    behavior?: CanvasBehavior[];
+    behaviors?: CanvasBehavior[];
 
     constructor(id: string, width?: number | null, height?: number | null, duration?: number | null) {
         super(id, 'Canvas');
@@ -43,15 +43,15 @@ export default class Canvas extends CollectionManifestCanvasRangeBase {
         }
     }
 
-    setBehavior(behaviors: CanvasBehavior[] | undefined): void {
-        this.behavior = behaviors;
+    setBehaviors(behaviors: CanvasBehavior[] | undefined): void {
+        this.behaviors = behaviors;
     }
 
     addBehavior(behavior: CanvasBehavior): void {
-        if (!this.behavior) {
-            this.behavior = [behavior];
+        if (!this.behaviors) {
+            this.behaviors = [behavior];
         } else {
-            this.behavior.push(behavior);
+            this.behaviors.push(behavior);
         }
     }
 }
