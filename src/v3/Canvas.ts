@@ -12,8 +12,8 @@ export default class Canvas extends CollectionManifestCanvasRangeBase {
     items?: AnnotationPage[];
     behavior?: CanvasBehavior[];
 
-    constructor(id: string, width?: number | null, height?: number | null, duration?: number | null) {
-        super(id, 'Canvas');
+    constructor(id: string, label?: string, width?: number | null, height?: number | null, duration?: number | null) {
+        super(id, 'Canvas', label);
         if (width) this.width = width;
         if (height) this.height = height;
         if (duration) this.duration = duration;

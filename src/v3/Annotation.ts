@@ -1,22 +1,23 @@
 import Base from './Base';
 import Canvas from './Canvas';
 import Resource from './Resource';
+import Choice from './Choice';
 
 export type TimeMode = 'trim' | 'scale' | 'loop';
 export type XYWH = { x: number; y: number; w: number; h: number; };
 
 export default class Annotation extends Base {
     motivation: string;
-    body: Resource;
+    body: Resource | Choice;
 
     target?: string;
     timeMode?: TimeMode;
     textGranularity?: string;
 
-    constructor(id: string, resource: Resource, motivation = 'painting') {
+    constructor(id: string, resource: Resource | Resource[], motivation = 'painting') {
         super(id, 'Annotation');
         this.motivation = motivation;
-        this.body = resource;
+        this.body = Array.isArray(resource) ? new Choice(resource) : resource;
     }
 
     setCanvas(canvas: Canvas, xywh?: XYWH): void {

@@ -10,8 +10,10 @@ import Canvas, {CanvasBehavior} from './Canvas';
 import Collection, {CollectionBehavior} from './Collection';
 import Image, {AccessTier, Tiles, Features, Profile, Quality} from './Image';
 import Manifest, {ManifestBehavior} from './Manifest';
+import Range from './Range';
 import Resource from './Resource';
 import Service from './Service';
+import Choice from './Choice';
 
 export {
     Annotation,
@@ -23,8 +25,10 @@ export {
     Collection,
     Image,
     Manifest,
+    Range,
     Resource,
     Service,
+    Choice,
 
     TimeMode,
     XYWH,
