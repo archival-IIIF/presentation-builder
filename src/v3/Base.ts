@@ -46,10 +46,7 @@ export default class Base implements Ref {
     }
 
     setContext(context?: string | string[]): void {
-        this['@context'] = context || [
-            'http://www.w3.org/ns/anno.jsonld',
-            'http://iiif.io/api/presentation/3/context.json'
-        ];
+        this['@context'] = context || 'http://iiif.io/api/presentation/3/context.json';
     }
 
     setLabel(label: Internationalize): void {

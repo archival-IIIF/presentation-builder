@@ -14,6 +14,7 @@ import Range from './Range';
 import Resource from './Resource';
 import Service from './Service';
 import Choice from './Choice';
+import Provider from './Provider';
 
 export {
     Annotation,
@@ -29,6 +30,7 @@ export {
     Resource,
     Service,
     Choice,
+    Provider,
 
     TimeMode,
     XYWH,

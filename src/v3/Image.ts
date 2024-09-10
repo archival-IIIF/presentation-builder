@@ -53,7 +53,6 @@ export default class Image extends Base {
     tiles?: Tiles[];
     extraFormats?: string[];
     preferredFormats?: string[];
-    rights?: string;
     extraQualities?: Quality[];
     extraFeatures?: Features[];
 
