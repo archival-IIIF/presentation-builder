@@ -9,10 +9,7 @@ describe('Doc: Manifest V3', function () {
         const should = {
             "id": "https://example.org/iiif/book1/manifest",
             "type": "Manifest",
-            "@context": [
-                "http://www.w3.org/ns/anno.jsonld",
-                "http://iiif.io/api/presentation/3/context.json"
-            ],
+            '@context': 'http://iiif.io/api/presentation/3/context.json',
             "label": {"none": ["Book 1"]}
         };
 
